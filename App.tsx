@@ -1,8 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { Hero } from './components/Hero';
-import { ProblemAgitate } from './components/ProblemAgitate';
+import { Problem } from './components/Problem';
 import { Solution } from './components/Solution';
-import { Aida } from './components/Aida';
 import { MythTruth } from './components/MythTruth';
 import { Footer } from './components/Footer';
 import { LeadModal } from './components/LeadModal';
@@ -59,9 +59,8 @@ const App: React.FC = () => {
 
       <main>
         <Hero onCtaClick={openModal} />
-        <ProblemAgitate />
+        <Problem onCtaClick={openModal} />
         <Solution onCtaClick={openModal} />
-        <Aida onCtaClick={openModal} />
         <MythTruth />
       </main>
 

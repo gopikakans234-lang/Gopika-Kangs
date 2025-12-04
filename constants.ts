@@ -1,56 +1,84 @@
 
+
 export const CONTENT = {
   hero: {
-    heading: "7+ years in web development… still stuck in the same place?",
-    subHeading: "It’s time to break the plateau.",
-    description: "You’re skilled. You’re experienced. But your career isn’t moving the way it should. Webolution gives you the strategy to rise—not just the skills.",
+    heading: "7+ years in web dev… stuck mid-career?",
+    subHeading: "Time to break the plateau.",
+    description: "",
     primaryCta: "Start Your Webolution",
     secondaryCta: "Learn How It Works"
   },
   problem: {
-    heading: "You’re working hard, but your career isn’t moving.",
-    description: "You’re experienced, dedicated, and reliable, yet promotions are rare and growth feels stagnant. Expectations rise, tech evolves, but your next step still feels unclear."
+    heading: "Still stuck in the same place?",
+    highlight: "", 
+    description: "You’ve spent 7+ years in web development, learning, building, and doing great work — but lately your career doesn’t feel as clear as it used to. You know you’re good at what you do, but figuring out “what’s next” feels confusing. You can feel there’s more potential in you… you just need a clearer path to move forward",
+    primaryCta: "Start Your Webolution",
+    secondaryCta: "LEARN HOW IT WORKS"
   },
   agitate: {
-    subHeading: "The longer you wait, the harder it becomes.",
-    points: [
-      "Junior devs seem to climb faster",
-      "New frameworks appear every month",
-      "Passion slowly turns into routine",
-      "The fear of being “left behind” grows louder",
-      "“Learn more, work harder” isn’t opening any doors anymore"
-    ]
+    text: "As a mid-career developer, you start noticing a shift:",
+    bullets: [
+      "You’ve gained years of experience, yet your growth doesn’t feel as sharp or exciting as it once did.",
+      "You’re learning new tools and tech, but it’s not translating into real career movement.",
+      "The roles you want feel just out of reach, even though you know you’re capable.",
+      "And quietly, you catch yourself wondering: “After all these years… why doesn’t my career feel aligned with where I thought I’d be?”"
+    ],
+    conclusion: "It’s not frustration — it’s the early signal of mid-career stagnation, something many skilled developers face long before they even realize it."
   },
   solution: {
-    heading: "Webolution is how you engineer your next big leap.",
-    description: "You’ll uncover hidden blockers, learn proven career-growth frameworks, and build a roadmap that takes you from stagnant to in-demand. We help you create a career that’s exciting, secure, and future-proof.",
+    heading: "Your 4-Phase Roadmap",
+    description: "Webolution shows you how to engineer your next big leap with a structured strategic plan.",
+    phases: [
+      {
+        phase: "Phase 1: Debug",
+        title: "Identify Hidden Blockers",
+        text: "Identify the hidden internal and external blockers slowing your career."
+      },
+      {
+        phase: "Phase 2: Design",
+        title: "Build Your Roadmap",
+        text: "Build a personalized roadmap aligned with your strengths, passion, and goals."
+      },
+      {
+        phase: "Phase 3: Develop & Deploy",
+        title: "Apply Skills Immediately",
+        text: "Start applying the right skills immediately and create visible impact."
+      },
+      {
+        phase: "Phase 4: Deliver",
+        title: "Grow Influence & Results",
+        text: "Grow your influence and deliver consistent results across your team, clients, and industry."
+      }
+    ],
     cta: "Get the Career Roadmap"
   },
   aida: {
     steps: [
-      { label: "Attention", text: "Is your web development career stuck in neutral despite all your experience?" },
-      { label: "Interest", text: "You’re not alone—many skilled developers hit a plateau. The real issue isn’t your talent; it’s invisible career blockers and outdated strategies that quietly hold you back." },
-      { label: "Desire", text: "Imagine reigniting your passion, leveling up your influence, and accelerating your career growth. With Webolution’s proven frameworks, you shift from “stuck” to “leading,” building a career that reflects your true value." },
-      { label: "Action", text: "Break the stagnation. Start your Webolution." }
+      {
+        text: "Stop watching others get promoted while you stay stuck."
+      },
+      {
+        text: "Discover the missing link between your skills and your career success."
+      },
+      {
+        text: "Take the decisive step towards the recognition and income you deserve."
+      }
     ],
-    cta: "Start Now"
+    cta: "Break the Cycle Now"
   },
-  truth: {
+  mythTruth: {
+    heading: "Why the old advice fails",
+    subHeading: "'Just learn more and work harder.' This myth keeps developers stuck. Real growth requires strategy, visibility, influence, and mindset.",
     cards: [
       {
-        type: "Problem",
-        title: "The Situation",
-        text: "You’re working hard, but you’re not moving up. Every Monday feels like the last."
+        type: "myth",
+        label: "Myth",
+        text: "\"Hard work = promotion\""
       },
       {
-        type: "Myth",
-        title: "The Lie",
-        text: "“If I just learn more and work harder, things will fall into place.”"
-      },
-      {
-        type: "Truth",
-        title: "The Reality",
-        text: "Career growth isn’t about effort—it’s about strategy, influence, positioning, and mindset. Webolution shows you how to create breakthrough success step by step."
+        type: "truth",
+        label: "Truth",
+        text: "\"Strategy + visibility = leverage\""
       }
     ]
   },
