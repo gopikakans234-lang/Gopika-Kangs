@@ -60,8 +60,8 @@ const App: React.FC = () => {
       <main>
         <Hero onCtaClick={openModal} />
         <Problem onCtaClick={openModal} />
-        <Solution onCtaClick={openModal} />
         <MythTruth />
+        <Solution onCtaClick={openModal} />
       </main>
 
       <Footer onCtaClick={openModal} />

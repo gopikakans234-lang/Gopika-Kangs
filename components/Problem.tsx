@@ -29,15 +29,20 @@ export const Problem: React.FC<ProblemProps> = ({ onCtaClick }) => {
             </motion.h3>
           )}
 
-          <motion.p 
-            className="text-lg md:text-2xl text-text-muted leading-relaxed max-w-3xl mx-auto font-light text-center"
+          <motion.div 
+            className="flex flex-col gap-6 max-w-3xl mx-auto text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {problem.description}
-          </motion.p>
+            <p className="text-lg md:text-2xl text-text-muted leading-relaxed font-light">
+              {problem.description}
+            </p>
+            <p className="text-xl md:text-3xl text-white leading-relaxed font-medium">
+              {problem.description2}
+            </p>
+          </motion.div>
 
           <motion.div 
             className="flex flex-col md:flex-row items-center gap-6 md:gap-10 mt-10 md:mt-12 mb-16 md:mb-20"
@@ -56,27 +61,78 @@ export const Problem: React.FC<ProblemProps> = ({ onCtaClick }) => {
             </button>
           </motion.div>
 
-          {/* Agitate Section */}
+          {/* Agitate Section - Box 1: Insight */}
           <motion.div 
-            className="w-full max-w-3xl text-left bg-white/5 border border-white/10 rounded-2xl p-6 md:p-10 backdrop-blur-sm"
+            className="w-full max-w-3xl text-left bg-navy-800 border border-brand-green/20 rounded-2xl p-6 md:p-10 backdrop-blur-sm mb-6 shadow-lg shadow-brand-green/5"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            <p className="text-xl md:text-2xl text-white font-bold mb-6">
-              {agitate.text}
-            </p>
-            
-            <ul className="space-y-4">
-              {agitate.bullets.map((bullet, idx) => (
-                <li key={idx} className="flex items-start gap-4 text-text-muted text-base md:text-lg leading-relaxed">
-                  <span className="flex-shrink-0 w-2 h-2 rounded-full bg-brand-green mt-2.5 animate-pulse"></span>
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
+            <div>
+              {agitate.heading && (
+                <h4 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                  {agitate.heading}
+                </h4>
+              )}
+              <p className="text-lg md:text-xl text-text-muted leading-relaxed">
+                {agitate.text}
+              </p>
+            </div>
           </motion.div>
+
+          {/* Agitate Section - Box 2: Pain Points Bullets */}
+          <motion.div 
+            className="w-full max-w-3xl text-left bg-white/5 border border-white/10 rounded-2xl p-6 md:p-10 backdrop-blur-sm mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <div>
+              {agitate.bulletTitle && (
+                <h5 className="text-xl md:text-2xl font-bold text-white mb-6">
+                  {agitate.bulletTitle}
+                </h5>
+              )}
+
+              {agitate.bullets && agitate.bullets.length > 0 && (
+                <ul className="space-y-4">
+                  {agitate.bullets.map((bullet, idx) => (
+                    <li key={idx} className="flex items-start gap-4 text-text-muted text-base md:text-lg leading-relaxed">
+                      <span className="flex-shrink-0 w-2 h-2 rounded-full bg-brand-green mt-2.5 animate-pulse"></span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </motion.div>
+
+          {/* Agitate Section - Box 3: Pain Review (No Box Styling) */}
+          {agitate.painReview && (
+            <motion.div 
+              className="w-full max-w-3xl text-left mt-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+            >
+              <div>
+                <h5 className="text-xl md:text-2xl font-bold text-white mb-4 leading-tight">
+                  {agitate.painReview.heading}
+                </h5>
+                <div className="space-y-4">
+                  {agitate.painReview.text.map((paragraph, idx) => (
+                    <p key={idx} className="text-text-muted text-base md:text-lg leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
         </div>
       </Section>
     </div>

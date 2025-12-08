@@ -43,29 +43,29 @@ export const MythTruth: React.FC = () => {
               className={`
                 relative p-10 rounded-2xl border transition-all duration-300 group
                 ${isMyth 
-                  ? 'bg-navy-800/50 border-red-500/20 hover:border-red-500/50 hover:bg-navy-800' 
-                  : 'bg-navy-800/50 border-brand-green/20 hover:border-brand-green/50 hover:bg-navy-800'}
+                  ? 'bg-navy-800 border-red-500/20 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(239,68,68,0.1)]' 
+                  : 'bg-navy-800 border-brand-green/20 hover:border-brand-green/50 hover:shadow-[0_0_30px_rgba(12,205,126,0.1)]'}
               `}
             >
               <div className="flex flex-col items-center text-center gap-6">
                 {/* Icon */}
                 <div className={`
-                  w-16 h-16 rounded-full flex items-center justify-center
+                  w-20 h-20 rounded-full flex items-center justify-center mb-2
                   ${isMyth ? 'bg-red-500/10 text-red-500' : 'bg-brand-green/10 text-brand-green'}
                 `}>
-                  {isMyth ? <X size={40} strokeWidth={3} /> : <Check size={40} strokeWidth={3} />}
+                  {isMyth ? <X size={48} strokeWidth={3} /> : <Check size={48} strokeWidth={3} />}
                 </div>
 
                 {/* Label */}
                 <h3 className={`
-                  text-2xl font-bold
+                  text-3xl font-bold tracking-tight
                   ${isMyth ? 'text-red-500' : 'text-brand-green'}
                 `}>
                   {card.label}
                 </h3>
 
                 {/* Text */}
-                <p className="text-xl md:text-2xl text-white font-medium">
+                <p className="text-2xl text-white font-medium leading-tight">
                   {card.text}
                 </p>
               </div>

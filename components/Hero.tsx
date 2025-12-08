@@ -23,8 +23,8 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-8"
         >
-          <span className="inline-block px-5 py-2 rounded-full bg-white/5 border border-white/10 text-brand-green text-xs font-bold tracking-[0.2em] uppercase backdrop-blur-md">
-            For Mid-Senior Developers
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-green text-[10px] font-bold tracking-[0.2em] uppercase backdrop-blur-md">
+            For Mid-Career Developers
           </span>
         </motion.div>
 
@@ -42,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
           </h1>
           
           {/* Subheading */}
-          <h2 className="text-2xl md:text-5xl font-sans font-black tracking-tighter text-brand-green uppercase transform scale-y-105">
+          <h2 className="text-2xl md:text-5xl font-sans font-black tracking-tighter text-brand-green uppercase transform scale-y-105 drop-shadow-[0_0_20px_rgba(12,205,126,0.3)]">
             {hero.subHeading}
           </h2>
         </motion.div>
