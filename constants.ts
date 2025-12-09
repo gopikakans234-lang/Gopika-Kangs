@@ -1,9 +1,8 @@
 
-
 export const CONTENT = {
   hero: {
     heading: "7+ years in web development.. are you feeling stuck in the same place?",
-    subHeading: "It’s time to break the slowdown",
+    subHeading: "It's time to break the slowdown",
     description: "",
     primaryCta: "Start Your Webolution",
     secondaryCta: "Learn How It Works"
@@ -11,25 +10,31 @@ export const CONTENT = {
   problem: {
     highlight: "", 
     description: "You’re skilled. You’re experienced. But your career isn’t moving the way it should. Webolution gives you the strategy to rise—not just the skills.",
+    description2: "",
     primaryCta: "Start Your Webolution",
     secondaryCta: "LEARN HOW IT WORKS"
   },
   agitate: {
     heading: "You’re not stuck because you lack talent. 💡",
     text: "You might already have the skills. What’s missing is clarity, strategy, and execution at the right level. 🚀",
-    bulletTitle: "The longer you wait, the harder it becomes.",
-    bullets: [
-      "The industry shifts every few months",
-      "Passion quietly turns into routine",
-      "The fear of being “left behind” grows",
-      "Junior devs seem to move faster",
-      "“Learn more, work harder” stops working"
-    ],
+    bulletTitle: "Is your web development career stuck in neutral?",
+    bulletDescription: "Many skilled developers hit a plateau. The real issue isn't lack of talent—it's invisible career blockers and outdated strategies that silently hold you back.",
+    bullets: [],
     painReview: {
       heading: "You’re working hard, but your career isn’t moving.",
       text: [
         "You’re experienced, dedicated, and reliable, yet promotions are rare and growth feels stagnant.",
         "Expectations rise, tech evolves, but your next step still feels unclear.."
+      ]
+    },
+    urgency: {
+      heading: "The longer you wait, the harder it becomes.",
+      bullets: [
+        "The industry shifts every few months",
+        "Passion quietly turns into routine",
+        "The fear of being “left behind” grows",
+        "Junior devs seem to move faster",
+        "“Learn more, work harder” stops working"
       ]
     },
     conclusion: "It’s not frustration — it’s the early signal of mid-career stagnation, something many skilled developers face long before they even realize it."
