@@ -57,7 +57,7 @@ export const Problem: React.FC<ProblemProps> = ({ onCtaClick }) => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-brand-green/5 blur-[50px] rounded-full pointer-events-none" />
             
             <img 
-              src="webolutionbook.png"
+              src="bookimage.png"
               alt="Webolution Book and Kindle Bundle" 
               className="relative z-10 w-full h-auto drop-shadow-2xl transform hover:scale-105 transition-transform duration-500 rounded-lg"
             />
