@@ -42,7 +42,7 @@ export const MythTruth: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
               className={`
-                relative p-10 border transition-all duration-300 group
+                relative p-6 md:p-10 border transition-all duration-300 group
                 ${isFirst 
                   ? 'rounded-t-2xl rounded-b-none md:rounded-l-2xl md:rounded-r-none border-b-0 md:border-b md:border-r-0' 
                   : 'rounded-b-2xl rounded-t-none md:rounded-r-2xl md:rounded-l-none'}
@@ -54,22 +54,22 @@ export const MythTruth: React.FC = () => {
               <div className="flex flex-col items-center text-center gap-6">
                 {/* Icon */}
                 <div className={`
-                  w-20 h-20 rounded-full flex items-center justify-center mb-2
+                  w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mb-2
                   ${isMyth ? 'bg-red-500/10 text-red-500' : 'bg-brand-green/10 text-brand-green'}
                 `}>
-                  {isMyth ? <X size={48} strokeWidth={3} /> : <Check size={48} strokeWidth={3} />}
+                  {isMyth ? <X size={40} className="md:w-12 md:h-12" strokeWidth={3} /> : <Check size={40} className="md:w-12 md:h-12" strokeWidth={3} />}
                 </div>
 
                 {/* Label */}
                 <h3 className={`
-                  text-3xl font-bold tracking-tight
+                  text-2xl md:text-3xl font-bold tracking-tight
                   ${isMyth ? 'text-red-500' : 'text-brand-green'}
                 `}>
                   {card.label}
                 </h3>
 
                 {/* Text */}
-                <p className="text-2xl text-white font-medium leading-tight">
+                <p className="text-xl md:text-2xl text-white font-medium leading-tight">
                   {card.text}
                 </p>
               </div>

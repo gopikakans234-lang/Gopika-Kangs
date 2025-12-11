@@ -23,15 +23,15 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-navy-900 text-text-main font-sans selection:bg-brand-green selection:text-navy-900">
-      <nav className="fixed top-0 w-full px-6 py-4 z-50 flex justify-between items-center pointer-events-none bg-gradient-to-b from-navy-900/80 to-transparent backdrop-blur-[2px]">
+      <nav className="fixed top-0 w-full px-4 md:px-6 py-3 md:py-4 z-50 flex justify-between items-center pointer-events-none bg-gradient-to-b from-navy-900/90 to-transparent backdrop-blur-[2px]">
         <div 
-          className="text-2xl font-black tracking-tighter pointer-events-auto cursor-pointer"
+          className="text-xl md:text-2xl font-black tracking-tighter pointer-events-auto cursor-pointer"
           onClick={scrollToTop}
         >
           <span className="text-brand-green">Web</span><span className="text-white">olution</span>
         </div>
         
-        <div className="pointer-events-auto flex gap-6 items-center">
+        <div className="pointer-events-auto flex gap-3 md:gap-6 items-center">
           <button 
             onClick={scrollToTop} 
             className="text-sm md:text-base text-white/80 hover:text-white font-medium transition-colors"
@@ -40,7 +40,7 @@ const App: React.FC = () => {
           </button>
           <button 
             onClick={openLoginModal} 
-            className="text-sm md:text-base px-4 py-2 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 hover:border-white/40 transition-all"
+            className="text-xs md:text-sm px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 hover:border-white/40 transition-all"
           >
             Login
           </button>

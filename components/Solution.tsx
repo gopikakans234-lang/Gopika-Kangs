@@ -44,7 +44,7 @@ export const Solution: React.FC<SolutionProps> = ({ onCtaClick }) => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white mb-8"
+            className="text-2xl md:text-4xl font-bold text-white mb-8"
           >
             {solution.heading}
           </motion.h2>
@@ -58,7 +58,7 @@ export const Solution: React.FC<SolutionProps> = ({ onCtaClick }) => {
             className="space-y-4"
           >
             {solution.intro && solution.intro.map((text, i) => (
-               <p key={i} className={`text-lg md:text-2xl leading-relaxed ${i === 0 ? 'text-white font-medium' : 'text-text-muted'}`}>
+               <p key={i} className={`text-lg md:text-2xl leading-relaxed ${i === 0 ? 'text-white font-normal' : 'text-text-muted'}`}>
                  {text}
                </p>
             ))}
@@ -93,7 +93,7 @@ export const Solution: React.FC<SolutionProps> = ({ onCtaClick }) => {
               {/* The Left Accent Bar - Gradient from Brand Green to Cyan/Blue */}
               <div className="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-brand-green to-blue-500 shadow-[0_0_15px_rgba(12,205,126,0.4)]" />
               
-              <div className="p-8 pl-10 md:pl-12">
+              <div className="p-6 pl-8 md:p-8 md:pl-12">
                 <div className="flex flex-col items-start gap-2 mb-3">
                   <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-brand-green transition-colors">
                     {phase.phase}

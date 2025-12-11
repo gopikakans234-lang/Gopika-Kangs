@@ -12,7 +12,7 @@ export const RealityCheck: React.FC = () => {
       <div className="max-w-5xl mx-auto text-center px-4">
         {/* Heading */}
         <motion.h2 
-          className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-white mb-5 tracking-tight leading-tight"
+          className="text-xl md:text-3xl lg:text-4xl font-extrabold text-white mb-5 tracking-tight leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -21,9 +21,9 @@ export const RealityCheck: React.FC = () => {
           {realityCheck.heading}
         </motion.h2>
         
-        {/* Text - Increased margin-bottom from mb-10 to mb-24 for better separation */}
+        {/* Text - Responsive margin-bottom */}
         <motion.p 
-          className="text-lg md:text-xl lg:text-2xl text-text-muted leading-relaxed font-medium max-w-4xl mx-auto mb-24"
+          className="text-lg md:text-xl lg:text-2xl text-text-muted leading-relaxed font-medium max-w-4xl mx-auto mb-12 md:mb-24"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -68,7 +68,7 @@ export const RealityCheck: React.FC = () => {
         {/* Pain Review Section - Increased width to max-w-5xl to prevent text wrapping */}
         {realityCheck.painReview && (
           <motion.div
-            className="mt-32 max-w-5xl mx-auto text-center"
+            className="mt-16 md:mt-32 max-w-5xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

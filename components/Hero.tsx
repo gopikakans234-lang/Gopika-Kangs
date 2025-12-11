@@ -12,9 +12,9 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
   const { hero } = CONTENT;
 
   return (
-    <Section className="min-h-[85vh] flex items-center justify-center pt-24 pb-16 relative overflow-hidden">
+    <Section className="min-h-[100dvh] md:min-h-[85vh] flex items-center justify-center pt-28 pb-12 md:pt-32 md:pb-20 relative overflow-hidden">
       {/* Background Glow for Image */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-green/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[400px] bg-brand-green/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
 
       <div className="flex flex-col items-center text-center max-w-6xl mx-auto px-4 relative z-10">
         
@@ -23,16 +23,16 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8"
+          className="mb-6 md:mb-8"
         >
-          <span className="inline-block px-6 py-3 rounded-full border border-brand-green/40 bg-brand-green/10 text-brand-green text-sm md:text-base font-extrabold tracking-[0.2em] uppercase backdrop-blur-md shadow-[0_0_25px_rgba(12,205,126,0.3)]">
+          <span className="inline-block px-4 py-2 md:px-6 md:py-3 rounded-full border border-brand-green/40 bg-brand-green/10 text-brand-green text-xs md:text-sm md:text-base font-extrabold tracking-[0.2em] uppercase backdrop-blur-md shadow-[0_0_25px_rgba(12,205,126,0.3)]">
             For Mid-Career Developers
           </span>
         </motion.div>
 
         {/* Main Heading - Prominent & Visible */}
         <motion.h1 
-          className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-8 leading-[1.1] tracking-tight max-w-5xl drop-shadow-2xl whitespace-pre-line"
+          className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 md:mb-8 leading-[1.1] tracking-tight max-w-5xl drop-shadow-2xl whitespace-pre-line"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
@@ -42,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
         
         {/* Green Sub-headline */}
         <motion.h2 
-          className="text-xl md:text-3xl font-bold text-brand-green uppercase tracking-wide mb-10"
+          className="text-lg md:text-3xl font-bold text-brand-green uppercase tracking-wide mb-8 md:mb-10"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -52,7 +52,7 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
 
         {/* Description Paragraph(s) - Reduced Size */}
         <motion.div 
-          className="text-base md:text-xl text-white/90 mb-12 max-w-4xl leading-relaxed font-normal flex flex-col gap-1"
+          className="text-base md:text-xl text-white/90 mb-10 md:mb-12 max-w-4xl leading-relaxed font-normal flex flex-col gap-1"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -68,7 +68,7 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
 
         {/* Buttons */}
         <motion.div 
-          className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10 mb-8"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 md:gap-10 mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
