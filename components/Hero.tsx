@@ -12,11 +12,11 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
   const { hero } = CONTENT;
 
   return (
-    <Section className="min-h-[100dvh] md:min-h-[85vh] flex items-center justify-center pt-28 pb-12 md:pt-32 md:pb-20 relative overflow-hidden">
+    <Section className="min-h-[100dvh] md:min-h-[85vh] flex items-center justify-center pt-24 pb-12 md:pt-32 md:pb-20 relative overflow-hidden">
       {/* Background Glow for Image */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[400px] bg-brand-green/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="flex flex-col items-center text-center max-w-6xl mx-auto px-4 relative z-10">
+      <div className="flex flex-col items-center text-center max-w-6xl mx-auto relative z-10 w-full">
         
         {/* Badge - Prominent Visibility */}
         <motion.div
@@ -32,7 +32,7 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
 
         {/* Main Heading - Prominent & Visible */}
         <motion.h1 
-          className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 md:mb-8 leading-[1.1] tracking-tight max-w-5xl drop-shadow-2xl whitespace-pre-line"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 md:mb-8 leading-[1.1] tracking-tight max-w-5xl drop-shadow-2xl whitespace-pre-line"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
@@ -52,7 +52,7 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
 
         {/* Description Paragraph(s) - Reduced Size */}
         <motion.div 
-          className="text-base md:text-xl text-white/90 mb-10 md:mb-12 max-w-4xl leading-relaxed font-normal flex flex-col gap-1"
+          className="text-base md:text-xl text-white/90 mb-10 md:mb-12 max-w-4xl leading-relaxed font-normal flex flex-col gap-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -68,16 +68,16 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
 
         {/* Buttons */}
         <motion.div 
-          className="flex flex-col sm:flex-row items-center justify-center gap-5 md:gap-10 mb-8"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 md:gap-10 mb-8 w-full sm:w-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <Button onClick={onCtaClick}>
+          <Button onClick={onCtaClick} className="w-full sm:w-auto">
             {hero.primaryCta}
           </Button>
           
-          <button className="group flex items-center gap-3 text-sm md:text-base font-bold tracking-[0.15em] text-white uppercase hover:text-brand-green transition-colors py-2">
+          <button className="group flex items-center justify-center gap-3 text-sm md:text-base font-bold tracking-[0.15em] text-white uppercase hover:text-brand-green transition-colors py-2">
             {hero.secondaryCta}
             <span className="w-8 md:w-12 h-[2px] bg-white/20 group-hover:bg-brand-green transition-colors duration-300"></span>
           </button>
