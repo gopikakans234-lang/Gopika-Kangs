@@ -1,22 +1,47 @@
 
+
 export const CONTENT = {
   hero: {
-    heading: "7+ years in web development.. are you feeling stuck in the same place?",
+    heading: "7+ years in web development..\nare you feeling stuck in the same place?",
     subHeading: "It's time to break the slowdown",
-    description: "",
+    description: [
+      "You’re skilled. You’re experienced. But your career isn’t moving the way it should.",
+      "Webolution gives you the strategy to rise—not just the skills."
+    ],
     primaryCta: "Start Your Webolution",
     secondaryCta: "Learn How It Works"
   },
+  realityCheck: {
+    heading: "You're not stuck because you lack talent 💡",
+    text: "You might already have the skills. What's missing is clarity, strategy, and execution at the right level. 🚀",
+    urgencyBox: {
+      heading: "The longer you wait, the harder it becomes",
+      items: [
+        { text: "The industry shifts every few months", emoji: "🌪️" },
+        { text: "Passion quietly turns into routine", emoji: "🤖" },
+        { text: "The fear of being “left behind” grows", emoji: "😰" },
+        { text: "Junior devs seem to move faster", emoji: "🐇" },
+        { text: "“Learn more, work harder” stops working", emoji: "🧱" }
+      ]
+    },
+    painReview: {
+      heading: "You’re working hard, but your career isn’t moving",
+      text: [
+        "You’re experienced, dedicated, and reliable, yet promotions are rare and growth feels stagnant.",
+        "Expectations rise, tech evolves, but your next step still feels unclear.."
+      ]
+    }
+  },
   problem: {
     highlight: "", 
-    description: "You’re skilled. You’re experienced. But your career isn’t moving the way it should. Webolution gives you the strategy to rise—not just the skills.",
-    description2: "",
+    description: "You’re not stuck because you lack talent. You might already have the skills.",
+    description2: "What’s missing is clarity, strategy, and execution at the right level.",
     primaryCta: "Start Your Webolution",
     secondaryCta: "LEARN HOW IT WORKS"
   },
   agitate: {
-    heading: "You’re not stuck because you lack talent. 💡",
-    text: "You might already have the skills. What’s missing is clarity, strategy, and execution at the right level. 🚀",
+    heading: "Is your web development career stuck in neutral?",
+    text: "The real issue isn't lack of talent—it's invisible career blockers and outdated strategies that silently hold you back.",
     bulletTitle: "Is your web development career stuck in neutral?",
     bulletDescription: "Many skilled developers hit a plateau. The real issue isn't lack of talent—it's invisible career blockers and outdated strategies that silently hold you back.",
     bullets: [],
@@ -40,7 +65,7 @@ export const CONTENT = {
     conclusion: "It’s not frustration — it’s the early signal of mid-career stagnation, something many skilled developers face long before they even realize it."
   },
   mythTruth: {
-    heading: "Why the old advice fails",
+    heading: "Why the old advice fails?",
     subHeading: "'Just learn more and work harder.' This myth keeps developers stuck. Real growth requires strategy, visibility, influence, and mindset.",
     cards: [
       {

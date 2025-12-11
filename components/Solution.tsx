@@ -28,7 +28,7 @@ export const Solution: React.FC<SolutionProps> = ({ onCtaClick }) => {
   };
 
   return (
-    <Section id="solution" className="bg-navy-900 relative overflow-hidden">
+    <Section id="solution" className="bg-navy-900 relative overflow-hidden pt-8 md:pt-12">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[100px] rounded-full pointer-events-none opacity-30" />
 
@@ -64,27 +64,6 @@ export const Solution: React.FC<SolutionProps> = ({ onCtaClick }) => {
             ))}
           </motion.div>
         </div>
-
-        {/* 
-          NEW IMAGE ADDITION 
-          Architecture of Career Growth Vol 1
-        */}
-        <motion.div
-            className="w-full max-w-[400px] mx-auto mb-20 relative flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-             {/* Background Glow Effect - Blue/Green blend for this section */}
-             <div className="absolute inset-0 bg-gradient-to-tr from-brand-green/20 to-blue-500/20 blur-[60px] rounded-full opacity-60 pointer-events-none"></div>
-             
-             <img 
-               src="/architecture-vol1.png" 
-               alt="The Architecture of Career Growth Vol 1" 
-               className="relative z-10 w-full h-auto object-contain drop-shadow-2xl rounded-sm border border-white/5"
-             />
-        </motion.div>
 
         {/* Roadmap Title */}
         <motion.h3 

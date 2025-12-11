@@ -45,24 +45,6 @@ export const Problem: React.FC<ProblemProps> = ({ onCtaClick }) => {
             )}
           </motion.div>
 
-          {/* Book Bundle Image Inserted Here */}
-          <motion.div
-            className="w-full max-w-[320px] md:max-w-[480px] mx-auto mb-12 md:mb-16 relative z-10"
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            {/* Subtle glow behind the book */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-brand-green/5 blur-[50px] rounded-full pointer-events-none" />
-            
-            <img 
-              src="/book_bundle.svg"
-              alt="Webolution Book and Kindle Bundle" 
-              className="relative z-10 w-full h-auto drop-shadow-2xl transform hover:scale-105 transition-transform duration-500 rounded-lg"
-            />
-          </motion.div>
-
           <motion.div 
             className="flex flex-col md:flex-row items-center gap-6 md:gap-10 mb-20 md:mb-24"
             initial={{ opacity: 0, y: 20 }}
@@ -80,7 +62,6 @@ export const Problem: React.FC<ProblemProps> = ({ onCtaClick }) => {
             </button>
           </motion.div>
 
-          {/* Agitate Section - Box 1: Insight */}
           <motion.div 
             className="w-full max-w-5xl text-center bg-navy-800 border border-brand-green/20 rounded-3xl p-8 md:p-12 backdrop-blur-sm shadow-xl shadow-brand-green/5"
             initial={{ opacity: 0, y: 20 }}
@@ -99,33 +80,6 @@ export const Problem: React.FC<ProblemProps> = ({ onCtaClick }) => {
               </p>
             </div>
           </motion.div>
-
-          {/* Agitate Section - Urgency */}
-          {agitate.urgency && (
-            <motion.div 
-              className="w-full max-w-4xl text-center mt-20 md:mt-32"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 1.0 }}
-            >
-              <h5 className="text-xl md:text-3xl font-bold text-white mb-12 tracking-tight">
-                {agitate.urgency.heading}
-              </h5>
-              
-              <div className="flex flex-col items-center">
-                <ul className="text-left space-y-6 inline-block">
-                  {agitate.urgency.bullets.map((bullet, idx) => (
-                    <li key={idx} className="flex items-start gap-4 text-lg md:text-2xl text-text-muted leading-relaxed font-medium">
-                      <span className="flex-shrink-0 mt-1">🔻</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          )}
-
         </div>
       </Section>
     </div>
