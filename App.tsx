@@ -3,6 +3,7 @@ import { Hero } from './components/Hero';
 import { RealityCheck } from './components/RealityCheck';
 import { Solution } from './components/Solution';
 import { MythTruth } from './components/MythTruth';
+import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 import { LeadModal } from './components/LeadModal';
 import { LoginModal } from './components/LoginModal';
@@ -52,6 +53,7 @@ const App: React.FC = () => {
         <RealityCheck />
         <MythTruth />
         <Solution onCtaClick={openLeadModal} />
+        <FAQ />
       </main>
 
       <Footer onCtaClick={openLeadModal} />

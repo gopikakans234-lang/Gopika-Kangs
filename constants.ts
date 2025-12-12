@@ -111,6 +111,31 @@ export const CONTENT = {
     ],
     cta: "Get the Career Roadmap"
   },
+  faq: {
+    heading: "Frequently Asked Questions",
+    items: [
+      {
+        question: "What is Webolution?",
+        answer: "Webolution is a career navigation system for mid-career software developers who feel stuck in the “valley of stagnation.” It helps you move from quiet frustration and stalled growth to clarity, momentum, and a visible, thriving career—without burning out or starting over."
+      },
+      {
+        question: "Who is this book for?",
+        answer: "Webolution is for mid-career web and software developers who feel capable but overlooked, tired of guessing their next move, or stuck despite working hard. If you’re not a beginner but not where you should be, this book is built for you."
+      },
+      {
+        question: "How is Webolution different from other career books?",
+        answer: "Most career books tell you to learn more, work harder, or be more confident. Webolution goes deeper. It helps you debug the hidden blockers slowing your growth, design a roadmap tailored to you, deploy focused action, and deliver results that compound over time. It’s not motivation—it’s orientation."
+      },
+      {
+        question: "What is the Webolution framework?",
+        answer: "The system follows four phases:\n\nDebug: Identify hidden blockers and patterns holding you back\nDesign: Create a personalized career roadmap\nDevelop & Deploy: Execute visible, meaningful work intentionally\nDeliver: Build sustainable growth, influence, and long-term momentum\n\nEach phase builds on the previous—no guesswork."
+      },
+      {
+        question: "Will this help if I already have a job?",
+        answer: "Yes—especially if you do. Webolution is for developers who are employed but not moving forward, feel overlooked, or are stuck doing work that no longer excites them. It helps you regain direction whether you stay, grow, shift roles, or pivot."
+      }
+    ]
+  },
   aida: {
     steps: [
       {
