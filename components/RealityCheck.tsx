@@ -13,21 +13,21 @@ export const RealityCheck: React.FC = () => {
         {/* Heading */}
         <motion.h2 
           className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-6 tracking-tight leading-tight px-2"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           {realityCheck.heading}
         </motion.h2>
         
-        {/* Text - Reduced by one size level */}
+        {/* Text */}
         <motion.p 
           className="text-base md:text-lg lg:text-xl text-text-muted leading-relaxed font-medium max-w-4xl mx-auto mb-10 md:mb-24 px-4"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
           {realityCheck.text}
         </motion.p>
@@ -36,10 +36,10 @@ export const RealityCheck: React.FC = () => {
         {realityCheck.urgencyBox && (
           <motion.div 
             className="w-full max-w-3xl mx-auto bg-navy-800 border border-white/10 rounded-3xl p-6 sm:p-8 md:p-10 text-left relative overflow-hidden shadow-2xl"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
           >
             {/* Background effect */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green/5 blur-[80px] rounded-full pointer-events-none" />
@@ -67,10 +67,10 @@ export const RealityCheck: React.FC = () => {
         {realityCheck.painReview && (
           <motion.div
             className="mt-16 md:mt-32 max-w-7xl mx-auto text-center px-4"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
           >
              <h3 className="text-2xl md:text-4xl font-black text-white mb-6 tracking-tight">
                {realityCheck.painReview.heading}
