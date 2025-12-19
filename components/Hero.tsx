@@ -17,7 +17,7 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
       {/* Background Glow for Image */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[400px] bg-brand-green/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="flex flex-col items-center text-center max-w-6xl mx-auto relative z-10 w-full px-2 sm:px-4">
+      <div className="flex flex-col items-center text-center max-w-7xl mx-auto relative z-10 w-full px-2 sm:px-4">
         
         {/* Badge - Prominent Visibility */}
         <motion.div
@@ -31,9 +31,9 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
           </span>
         </motion.div>
 
-        {/* Main Heading - Refined for mobile wrapping */}
+        {/* Main Heading - Reduced by one size level */}
         <motion.h1 
-          className="text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 md:mb-8 leading-[1.1] md:leading-[1.1] tracking-tight max-w-5xl drop-shadow-2xl whitespace-normal md:whitespace-pre-line px-2"
+          className="text-[24px] sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 md:mb-8 leading-[1.1] md:leading-[1.1] tracking-tight max-w-5xl drop-shadow-2xl whitespace-normal md:whitespace-pre-line px-2"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
         
         {/* Green Sub-headline */}
         <motion.h2 
-          className="text-base sm:text-lg md:text-3xl font-bold text-brand-green uppercase tracking-widest mb-8 md:mb-10 px-4"
+          className="text-base sm:text-lg md:text-2xl font-bold text-brand-green uppercase tracking-widest mb-8 md:mb-10 px-4"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -51,19 +51,19 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
           {hero.subHeading}
         </motion.h2>
 
-        {/* Description Paragraph(s) - Better spacing on mobile */}
+        {/* Description Paragraph(s) - Ensuring single straight lines on desktop */}
         <motion.div 
-          className="text-base md:text-xl text-white/90 mb-10 md:mb-12 max-w-3xl leading-relaxed font-normal flex flex-col gap-3 px-4"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 mb-10 md:mb-12 w-full max-w-none leading-relaxed font-normal flex flex-col gap-3 px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           {Array.isArray(hero.description) ? (
             hero.description.map((line: string, index: number) => (
-              <p key={index}>{line}</p>
+              <p key={index} className="md:whitespace-nowrap">{line}</p>
             ))
           ) : (
-            <p>{hero.description}</p>
+            <p className="md:whitespace-nowrap">{hero.description}</p>
           )}
         </motion.div>
 
