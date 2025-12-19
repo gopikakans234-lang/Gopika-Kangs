@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { Hero } from './components/Hero';
 import { RealityCheck } from './components/RealityCheck';
 import { Solution } from './components/Solution';
 import { MythTruth } from './components/MythTruth';
 import { FAQ } from './components/FAQ';
+import { BlogList } from './components/BlogList';
+import { BlogDetail } from './components/BlogDetail';
 import { Footer } from './components/Footer';
 import { LeadModal } from './components/LeadModal';
 import { LoginModal } from './components/LoginModal';
 
+type View = 'home' | 'blog' | 'blog-post';
+
 const App: React.FC = () => {
+  const [view, setView] = useState<View>('home');
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  // Scroll to top when view changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [view]);
 
   const openLeadModal = () => setIsLeadModalOpen(true);
   const closeLeadModal = () => setIsLeadModalOpen(false);
@@ -18,42 +29,81 @@ const App: React.FC = () => {
   const openLoginModal = () => setIsLoginModalOpen(true);
   const closeLoginModal = () => setIsLoginModalOpen(false);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const navigateToHome = () => setView('home');
+  const navigateToBlog = () => setView('blog');
+  const navigateToPost = (postId: string) => {
+    // For this prototype, all posts lead to the same detailed post content
+    setView('blog-post');
   };
 
   return (
     <div className="min-h-screen bg-navy-900 text-text-main font-sans selection:bg-brand-green selection:text-navy-900">
-      <nav className="fixed top-0 w-full px-4 md:px-6 py-3 md:py-4 z-50 flex justify-between items-center pointer-events-none bg-gradient-to-b from-navy-900/90 to-transparent backdrop-blur-[2px]">
+      <nav className="fixed top-0 w-full px-4 md:px-6 py-3 md:py-4 z-50 flex justify-between items-center bg-navy-900/90 backdrop-blur-md border-b border-white/5">
         <div 
-          className="text-xl md:text-2xl font-black tracking-tighter pointer-events-auto cursor-pointer"
-          onClick={scrollToTop}
+          className="text-xl md:text-2xl font-black tracking-tighter cursor-pointer flex items-center gap-1"
+          onClick={navigateToHome}
         >
           <span className="text-brand-green">Web</span><span className="text-white">olution</span>
         </div>
         
-        <div className="pointer-events-auto flex gap-3 md:gap-6 items-center">
-          <button 
-            onClick={scrollToTop} 
-            className="text-sm md:text-base text-white/80 hover:text-white font-medium transition-colors"
-          >
-            Home
-          </button>
-          <button 
-            onClick={openLoginModal} 
-            className="text-xs md:text-sm px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 hover:border-white/40 transition-all"
-          >
-            Login
-          </button>
+        <div className="flex gap-4 md:gap-8 items-center">
+          <div className="hidden sm:flex gap-6 items-center">
+            <button 
+              onClick={navigateToHome} 
+              className={`text-sm md:text-base font-medium transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
+            >
+              Home
+            </button>
+            <button 
+              onClick={navigateToBlog} 
+              className={`text-sm md:text-base font-medium transition-colors ${view === 'blog' || view === 'blog-post' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
+            >
+              Blog
+            </button>
+          </div>
+          
+          <div className="flex gap-2 md:gap-4 items-center">
+            <button 
+              onClick={openLoginModal} 
+              className="text-xs md:text-sm px-4 py-2 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 hover:border-white/40 transition-all"
+            >
+              Login
+            </button>
+            <button 
+              onClick={navigateToBlog} 
+              className="sm:hidden text-white/80"
+              aria-label="Blog"
+            >
+              <span className="text-sm font-bold">Blog</span>
+            </button>
+          </div>
         </div>
       </nav>
 
-      <main>
-        <Hero onCtaClick={openLeadModal} />
-        <RealityCheck />
-        <MythTruth />
-        <Solution onCtaClick={openLeadModal} />
-        <FAQ />
+      <main className="relative">
+        {view === 'home' && (
+          <>
+            <Hero onCtaClick={openLeadModal} />
+            <RealityCheck />
+            <MythTruth />
+            <Solution onCtaClick={openLeadModal} />
+            <FAQ />
+          </>
+        )}
+
+        {view === 'blog' && (
+          <BlogList 
+            onReadMore={navigateToPost} 
+            onCtaClick={openLeadModal} 
+          />
+        )}
+
+        {view === 'blog-post' && (
+          <BlogDetail 
+            onBack={navigateToBlog} 
+            onCtaClick={openLeadModal} 
+          />
+        )}
       </main>
 
       <Footer onCtaClick={openLeadModal} />
