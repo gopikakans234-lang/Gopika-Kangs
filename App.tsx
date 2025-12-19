@@ -32,55 +32,55 @@ const App: React.FC = () => {
   const navigateToHome = () => setView('home');
   const navigateToBlog = () => setView('blog');
   const navigateToPost = (postId: string) => {
-    // For this prototype, all posts lead to the same detailed post content
     setView('blog-post');
   };
 
   return (
-    <div className="min-h-screen bg-navy-900 text-text-main font-sans selection:bg-brand-green selection:text-navy-900">
-      <nav className="fixed top-0 w-full px-4 md:px-6 py-3 md:py-4 z-50 flex justify-between items-center bg-navy-900/90 backdrop-blur-md border-b border-white/5">
+    <div className="min-h-screen bg-navy-900 text-text-main font-sans selection:bg-brand-green selection:text-navy-900 antialiased overflow-x-hidden">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full px-4 md:px-8 py-4 z-50 flex justify-between items-center bg-navy-900/90 backdrop-blur-lg border-b border-white/5">
         <div 
-          className="text-xl md:text-2xl font-black tracking-tighter cursor-pointer flex items-center gap-1"
+          className="text-lg sm:text-xl md:text-2xl font-black tracking-tighter cursor-pointer flex items-center gap-1"
           onClick={navigateToHome}
         >
           <span className="text-brand-green">Web</span><span className="text-white">olution</span>
         </div>
         
-        <div className="flex gap-4 md:gap-8 items-center">
+        <div className="flex gap-4 sm:gap-8 items-center">
           <div className="hidden sm:flex gap-6 items-center">
             <button 
               onClick={navigateToHome} 
-              className={`text-sm md:text-base font-medium transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
+              className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
             >
               Home
             </button>
             <button 
               onClick={navigateToBlog} 
-              className={`text-sm md:text-base font-medium transition-colors ${view === 'blog' || view === 'blog-post' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
+              className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'blog' || view === 'blog-post' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
             >
               Blog
             </button>
           </div>
           
-          <div className="flex gap-2 md:gap-4 items-center">
+          <div className="flex gap-3 md:gap-4 items-center">
             <button 
               onClick={openLoginModal} 
-              className="text-xs md:text-sm px-4 py-2 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 hover:border-white/40 transition-all"
+              className="text-[10px] sm:text-xs md:text-sm px-4 py-2 rounded-full border border-white/20 text-white font-bold uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all"
             >
               Login
             </button>
             <button 
               onClick={navigateToBlog} 
-              className="sm:hidden text-white/80"
+              className="sm:hidden text-white/90 font-bold text-xs uppercase tracking-widest"
               aria-label="Blog"
             >
-              <span className="text-sm font-bold">Blog</span>
+              Blog
             </button>
           </div>
         </div>
       </nav>
 
-      <main className="relative">
+      <main className="relative w-full">
         {view === 'home' && (
           <>
             <Hero onCtaClick={openLeadModal} />

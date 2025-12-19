@@ -112,15 +112,15 @@ export const CONTENT = {
   },
   blog: {
     listHero: {
-      heading: "Insights for the Stagnant Developer",
-      subHeading: "Moving from 7+ years of experience to true career influence.",
-      intro: "Most developers hit a plateau not because they stop learning, but because they stop evolving their strategy. Webolution is about identifying the invisible walls between you and the next level."
+      heading: "Insights for the Evolution",
+      subHeading: "Breaking the 7+ Year Developer Stagnation",
+      intro: "You've mastered the code. Now it's time to master the career. Explore our latest strategic insights designed for mid-career developers who are ready for more."
     },
     posts: [
       {
         id: "break-the-slowdown",
         title: "For Mid-Career Web Developers: It’s Time to Break the Slowdown",
-        summary: "Are you skilled but overlooked? Explore the real reasons why 7+ years of experience can sometimes lead to stagnation, and how to start moving again.",
+        summary: "Are you skilled but overlooked? Reassure yourself that lack of growth is not due to lack of talent. It's time to engineer your next leap.",
         date: "Latest",
         category: "Strategy"
       },
@@ -137,48 +137,56 @@ export const CONTENT = {
         summary: "Stagnation is often a side effect of technical comfort. We analyze the psychology of the 'mid-career trap' and how to escape it.",
         date: "Popular",
         category: "Mindset"
-      },
-      {
-        id: "junior-speed",
-        title: "Why Junior Developers Are Moving Faster Than You",
-        summary: "It’s not just youth—it's momentum. Discover how to reclaim the high-velocity growth of your early career with a senior perspective.",
-        date: "Trending",
-        category: "Analysis"
       }
     ],
     detailedPost: {
       title: "For Mid-Career Web Developers: It’s Time to Break the Slowdown",
-      hook: "You’ve put in the time. You’ve mastered the stacks. You’ve shipped the features. But lately, when you look at your career trajectory, it feels like the line has flattened. You’re not falling behind, but you’re certainly not moving forward at the pace you expected. Promotions feel rare, your influence feels capped, and the next step is a blur.",
-      theProblem: "You are skilled. You are experienced. But you are stuck. This is the 'Mid-Career Slowdown,' and it happens to the best of us when we rely solely on technical output as our only lever for growth.",
-      whyItHappens: [
-        "Industry shifts every few months, making deep specialized knowledge feel volatile.",
-        "Passion quietly turns into routine as you solve the same types of problems.",
-        "Fear of being left behind by newer, 'trendier' technologies grows.",
-        "Junior developers seem to grow faster because they have less to lose and more immediate milestones.",
-        "'Learn more, work harder' has a ceiling, and you've hit it."
-      ],
-      myth: "Hard work = automatic promotion and recognition.",
-      truth: "Strategy + visibility = leverage. You need to be seen doing the work that matters.",
-      frameworkIntro: "Webolution isn't about teaching you a new framework. It's about building a framework for your career. It provides the orientation you need to move with purpose.",
-      phases: [
+      heroHook: "You’ve put in the time. You’ve mastered the stacks. You’ve shipped the features. But lately, when you look at your career trajectory, it feels like the line has flattened. If you're feeling stuck, know this: It isn't because you lack talent. It's because your growth engine needs a new blueprint.",
+      silentPlateau: {
+        heading: "The Silent Plateau",
+        text: "Many developers hit a plateau after the 7-year mark. Promotions that used to come naturally now seem to slow down. Work that was once exciting becomes routine. You're competent, you're reliable, but your direction feels unclear. You're in the 'Valley of Stagnation,' where your effort no longer correlates directly to your progress."
+      },
+      hardWorkVsStrategy: {
+        heading: "Why Hard Work Alone No Longer Works",
+        text: "In your first few years, learning a new framework or putting in extra hours was enough. But the industry moves fast, and technical skills alone don't create career leverage anymore.",
+        myth: "Hard work = automatic promotion.",
+        truth: "Strategy + visibility = leverage."
+      },
+      realReason: {
+        heading: "The Real Reason You’re Stuck",
+        points: [
+          "Invisible Blockers: Internal or external barriers you haven't identified yet.",
+          "Lack of Clarity: Not knowing exactly where you want to be in 3 years.",
+          "No Long-term Strategy: Reacting to the job market instead of leading it.",
+          "Limited Visibility: Doing great work that nobody with influence sees."
+        ]
+      },
+      webolutionIntro: {
+        heading: "Introducing Webolution",
+        text: "Webolution is a career-engineering system designed specifically for experienced developers. It moves past simple 'skill-building' and focuses on clarity, strategy, and execution to make you an in-demand leader in your field."
+      },
+      framework: [
         {
-          name: "Phase 1: Debug",
-          desc: "Identify the invisible internal and external blockers holding you back. Is it a skills gap, or a communication gap? Is it your environment, or your mindset?"
+          phase: "Phase 1: Debug",
+          text: "Identify the internal and external career blockers holding you back. We find the bugs in your current career path before we build anything new."
         },
         {
-          name: "Phase 2: Design",
-          desc: "Stop guessing. We create a personalized career roadmap that aligns your existing strengths with market demands and your personal long-term goals."
+          phase: "Phase 2: Design",
+          text: "Create a personalized career roadmap. We align your deep technical strengths with current industry demands and your personal growth goals."
         },
         {
-          name: "Phase 3: Develop & Deploy",
-          desc: "Execute with intentionality. We focus on shipping high-visibility work that demonstrates your senior-level impact beyond just writing lines of code."
+          phase: "Phase 3: Develop & Deploy",
+          text: "Execute meaningful work with high visibility. You'll learn how to ship results that get noticed by the people who matter."
         },
         {
-          name: "Phase 4: Deliver",
-          desc: "Build sustainable influence. This is where your efforts compound, leading to long-term momentum, higher income, and true career sovereignty."
+          phase: "Phase 4: Deliver",
+          text: "Build momentum and influence. This is where your career efforts start to compound, leading to sustainable long-term growth and authority."
         }
       ],
-      closing: "The plateau is only permanent if you stop trying to climb. It’s time to stop working harder and start working smarter. Your experience is your greatest asset—let's use it properly."
+      closing: {
+        text: "The plateau is only permanent if you stop trying to climb. It’s time to stop working harder and start working smarter.",
+        cta: "Start your Webolution today."
+      }
     }
   },
   faq: {
