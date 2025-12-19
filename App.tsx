@@ -9,14 +9,12 @@ import { BlogList } from './components/BlogList';
 import { BlogDetail } from './components/BlogDetail';
 import { Footer } from './components/Footer';
 import { LeadModal } from './components/LeadModal';
-import { LoginModal } from './components/LoginModal';
 
 type View = 'home' | 'blog' | 'blog-post';
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>('home');
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   // Scroll to top when view changes
   useEffect(() => {
@@ -25,9 +23,6 @@ const App: React.FC = () => {
 
   const openLeadModal = () => setIsLeadModalOpen(true);
   const closeLeadModal = () => setIsLeadModalOpen(false);
-
-  const openLoginModal = () => setIsLoginModalOpen(true);
-  const closeLoginModal = () => setIsLoginModalOpen(false);
 
   const navigateToHome = () => setView('home');
   const navigateToBlog = () => setView('blog');
@@ -47,7 +42,7 @@ const App: React.FC = () => {
         </div>
         
         <div className="flex gap-4 sm:gap-8 items-center">
-          <div className="hidden sm:flex gap-6 items-center">
+          <div className="flex gap-6 items-center">
             <button 
               onClick={navigateToHome} 
               className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
@@ -57,22 +52,6 @@ const App: React.FC = () => {
             <button 
               onClick={navigateToBlog} 
               className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'blog' || view === 'blog-post' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
-            >
-              Blog
-            </button>
-          </div>
-          
-          <div className="flex gap-3 md:gap-4 items-center">
-            <button 
-              onClick={openLoginModal} 
-              className="text-[10px] sm:text-xs md:text-sm px-4 py-2 rounded-full border border-white/20 text-white font-bold uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all"
-            >
-              Login
-            </button>
-            <button 
-              onClick={navigateToBlog} 
-              className="sm:hidden text-white/90 font-bold text-xs uppercase tracking-widest"
-              aria-label="Blog"
             >
               Blog
             </button>
@@ -109,7 +88,6 @@ const App: React.FC = () => {
       <Footer onCtaClick={openLeadModal} />
       
       <LeadModal isOpen={isLeadModalOpen} onClose={closeLeadModal} />
-      <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
     </div>
   );
 };
