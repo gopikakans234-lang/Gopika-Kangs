@@ -253,6 +253,79 @@ export const CONTENT = {
       }
     }
   },
+  podcast: {
+    hero: {
+      heading: "For Mid-Career Web Developers",
+      subHeading: "7+ years in web development and feeling stuck? It’s time to break the slowdown.",
+      intro: "Webolution is a podcast for experienced developers who have skills but lack clarity, strategy, and execution at the next level."
+    },
+    episodes: [
+      {
+        id: "start-your-webolution",
+        title: "Start Your Webolution",
+        summary: "You’re skilled. You’re experienced. But your career isn’t moving the way it should. Discover the missing links to your next leap.",
+        duration: "18:42",
+        category: "Orientation"
+      },
+      {
+        id: "hard-work-not-enough-pod",
+        title: "Why Hard Work Isn’t Enough Anymore",
+        summary: "Deep diving into the strategy gap. Learn why being the 'hardest worker' might actually be holding you back.",
+        duration: "24:15",
+        category: "Strategy"
+      },
+      {
+        id: "mid-career-slowdown",
+        title: "The Mid-Career Slowdown Explained",
+        summary: "What actually happens when you hit 7+ years? We analyze the industry trends and internal psychology of stagnation.",
+        duration: "21:30",
+        category: "Analysis"
+      },
+      {
+        id: "strategy-over-skills",
+        title: "Strategy Over Skills",
+        summary: "Frameworks change, but strategy is forever. How to prioritize long-term leverage over the next JS library.",
+        duration: "19:50",
+        category: "Growth"
+      },
+      {
+        id: "future-proof-career",
+        title: "Designing a Future-Proof Developer Career",
+        summary: "Practical steps to architecting a career that remains in-demand regardless of market shifts.",
+        duration: "27:10",
+        category: "Architecture"
+      }
+    ],
+    details: {
+      "start-your-webolution": {
+        title: "Start Your Webolution",
+        audioUrl: "#", // Placeholder
+        description: "You’re skilled. You’re experienced. But your career isn’t moving the way it should.\n\nYou’re not stuck because you lack talent. You might already have the skills. What’s missing is clarity, strategy, and execution at the right level.",
+        talkingPoints: [
+          "The industry shifts every few months",
+          "Passion quietly turns into routine",
+          "Fear of being left behind grows",
+          "Junior developers seem to move faster",
+          "‘Learn more, work harder’ stops working"
+        ],
+        oldAdvice: {
+          myth: "Hard work = promotion",
+          truth: "Strategy + visibility = leverage"
+        },
+        blueprint: {
+          heading: "Your Blueprint for a Future-Proof Developer Career",
+          summary: "Webolution is more than just a podcast; it's a career-engineering system designed for the mid-career developer.",
+          phases: [
+            { id: 1, title: "Debug", desc: "Identify hidden blockers slowing your growth." },
+            { id: 2, title: "Design", desc: "Build a personalized roadmap tailored to your strengths." },
+            { id: 3, title: "Develop & Deploy", desc: "Execute and ship meaningful work intentionally." },
+            { id: 4, title: "Deliver", desc: "Build influence and compound your career impact." }
+          ]
+        },
+        cta: "Start Your Webolution"
+      }
+    }
+  },
   faq: {
     heading: "Frequently Asked Questions",
     items: [

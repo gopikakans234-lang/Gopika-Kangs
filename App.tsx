@@ -7,14 +7,17 @@ import { MythTruth } from './components/MythTruth';
 import { FAQ } from './components/FAQ';
 import { BlogList } from './components/BlogList';
 import { BlogDetail } from './components/BlogDetail';
+import { PodcastList } from './components/PodcastList';
+import { PodcastDetail } from './components/PodcastDetail';
 import { Footer } from './components/Footer';
 import { LeadModal } from './components/LeadModal';
 
-type View = 'home' | 'blog' | 'blog-post';
+type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail';
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>('home');
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
+  const [selectedPodcastId, setSelectedPodcastId] = useState<string | null>(null);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
 
   // Scroll to top when view changes
@@ -28,16 +31,29 @@ const App: React.FC = () => {
   const navigateToHome = () => {
     setView('home');
     setSelectedPostId(null);
+    setSelectedPodcastId(null);
   };
   
   const navigateToBlog = () => {
     setView('blog');
     setSelectedPostId(null);
+    setSelectedPodcastId(null);
+  };
+
+  const navigateToPodcast = () => {
+    setView('podcast');
+    setSelectedPostId(null);
+    setSelectedPodcastId(null);
   };
   
   const navigateToPost = (postId: string) => {
     setSelectedPostId(postId);
     setView('blog-post');
+  };
+
+  const navigateToPodcastDetail = (podcastId: string) => {
+    setSelectedPodcastId(podcastId);
+    setView('podcast-detail');
   };
 
   return (
@@ -48,11 +64,11 @@ const App: React.FC = () => {
           className="text-lg sm:text-xl md:text-2xl font-black tracking-tighter cursor-pointer flex items-center gap-1"
           onClick={navigateToHome}
         >
-          <span className="text-brand-green">Web</span><span className="text-white">olution</span>
+          <span className="text-brand-green">Web</span><span className="text-white">ution</span>
         </div>
         
         <div className="flex gap-4 sm:gap-8 items-center">
-          <div className="flex gap-6 items-center">
+          <div className="flex gap-4 sm:gap-6 items-center">
             <button 
               onClick={navigateToHome} 
               className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
@@ -64,6 +80,12 @@ const App: React.FC = () => {
               className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'blog' || view === 'blog-post' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
             >
               Blog
+            </button>
+            <button 
+              onClick={navigateToPodcast} 
+              className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'podcast' || view === 'podcast-detail' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
+            >
+              Podcast
             </button>
           </div>
         </div>
@@ -92,6 +114,21 @@ const App: React.FC = () => {
             postId={selectedPostId}
             onBack={navigateToBlog} 
             onCtaClick={openLeadModal} 
+          />
+        )}
+
+        {view === 'podcast' && (
+          <PodcastList 
+            onListenNow={navigateToPodcastDetail} 
+            onCtaClick={openLeadModal}
+          />
+        )}
+
+        {view === 'podcast-detail' && selectedPodcastId && (
+          <PodcastDetail 
+            podcastId={selectedPodcastId}
+            onBack={navigateToPodcast}
+            onCtaClick={openLeadModal}
           />
         )}
       </main>
