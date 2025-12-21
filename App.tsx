@@ -14,6 +14,7 @@ type View = 'home' | 'blog' | 'blog-post';
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>('home');
+  const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
 
   // Scroll to top when view changes
@@ -24,9 +25,18 @@ const App: React.FC = () => {
   const openLeadModal = () => setIsLeadModalOpen(true);
   const closeLeadModal = () => setIsLeadModalOpen(false);
 
-  const navigateToHome = () => setView('home');
-  const navigateToBlog = () => setView('blog');
+  const navigateToHome = () => {
+    setView('home');
+    setSelectedPostId(null);
+  };
+  
+  const navigateToBlog = () => {
+    setView('blog');
+    setSelectedPostId(null);
+  };
+  
   const navigateToPost = (postId: string) => {
+    setSelectedPostId(postId);
     setView('blog-post');
   };
 
@@ -77,8 +87,9 @@ const App: React.FC = () => {
           />
         )}
 
-        {view === 'blog-post' && (
+        {view === 'blog-post' && selectedPostId && (
           <BlogDetail 
+            postId={selectedPostId}
             onBack={navigateToBlog} 
             onCtaClick={openLeadModal} 
           />

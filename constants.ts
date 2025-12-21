@@ -139,53 +139,117 @@ export const CONTENT = {
         category: "Mindset"
       }
     ],
-    detailedPost: {
-      title: "For Mid-Career Web Developers: It’s Time to Break the Slowdown",
-      heroHook: "You’ve put in the time. You’ve mastered the stacks. You’ve shipped the features. But lately, when you look at your career trajectory, it feels like the line has flattened. If you're feeling stuck, know this: It isn't because you lack talent. It's because your growth engine needs a new blueprint.",
-      silentPlateau: {
-        heading: "The Silent Plateau",
-        text: "Many developers hit a plateau after the 7-year mark. Promotions that used to come naturally now seem to slow down. Work that was once exciting becomes routine. You're competent, you're reliable, but your direction feels unclear. You're in the 'Valley of Stagnation,' where your effort no longer correlates directly to your progress."
-      },
-      hardWorkVsStrategy: {
-        heading: "Why Hard Work Alone No Longer Works",
-        text: "In your first few years, learning a new framework or putting in extra hours was enough. But the industry moves fast, and technical skills alone don't create career leverage anymore.",
-        myth: "Hard work = automatic promotion.",
-        truth: "Strategy + visibility = leverage."
-      },
-      realReason: {
-        heading: "The Real Reason You’re Stuck",
-        points: [
-          "Invisible Blockers: Internal or external barriers you haven't identified yet.",
-          "Lack of Clarity: Not knowing exactly where you want to be in 3 years.",
-          "No Long-term Strategy: Reacting to the job market instead of leading it.",
-          "Limited Visibility: Doing great work that nobody with influence sees."
-        ]
-      },
-      webolutionIntro: {
-        heading: "Introducing Webolution",
-        text: "Webolution is a career-engineering system designed specifically for experienced developers. It moves past simple 'skill-building' and focuses on clarity, strategy, and execution to make you an in-demand leader in your field."
-      },
-      framework: [
-        {
-          phase: "Phase 1: Debug",
-          text: "Identify the internal and external career blockers holding you back. We find the bugs in your current career path before we build anything new."
+    details: {
+      "break-the-slowdown": {
+        title: "For Mid-Career Web Developers: It’s Time to Break the Slowdown",
+        heroHook: "You’ve put in the time. You’ve mastered the stacks. You’ve shipped the features. But lately, when you look at your career trajectory, it feels like the line has flattened.",
+        silentPlateau: {
+          heading: "The Strategy Shift",
+          text: "After 7 years, your technical expertise is expected. What separates leaders from senior individual contributors is no longer the speed of their typing, but the depth of their strategy."
         },
-        {
-          phase: "Phase 2: Design",
-          text: "Create a personalized career roadmap. We align your deep technical strengths with current industry demands and your personal growth goals."
+        hardWorkVsStrategy: {
+          heading: "Engineering Your Trajectory",
+          text: "You manage code with architectures, but do you manage your career with a blueprint? Without a strategy, you're just reacting to Jira tickets.",
+          myth: "More tech skills = More growth.",
+          truth: "Specific leverage = Exponential growth."
         },
-        {
-          phase: "Phase 3: Develop & Deploy",
-          text: "Execute meaningful work with high visibility. You'll learn how to ship results that get noticed by the people who matter."
+        realReason: {
+          heading: "The Strategic Vacuum",
+          points: [
+            "Lack of a 'North Star' Goal: Running fast in no particular direction.",
+            "Market Misalignment: Mastering tools the market no longer rewards at a premium.",
+            "Passive Networking: Waiting for opportunities to find you instead of creating them.",
+            "Undervalued Impact: Doing critical work that lacks internal visibility."
+          ]
         },
-        {
-          phase: "Phase 4: Deliver",
-          text: "Build momentum and influence. This is where your career efforts start to compound, leading to sustainable long-term growth and authority."
+        webolutionIntro: {
+          heading: "Webolution Strategy",
+          text: "Webolution isn't about teaching you a new framework. It's about teaching you how to position yourself so you never have to 'chase' a promotion again."
+        },
+        framework: [
+          { phase: "Audit", text: "A deep dive into your current market value and positioning." },
+          { phase: "Position", text: "Crafting a unique value proposition that makes you an 'only' instead of a 'one of many'." },
+          { phase: "Amplify", text: "Strategic visibility to ensure your work reaches the right decision-makers." },
+          { phase: "Command", text: "Taking ownership of your career path and negotiating from a position of strength." }
+        ],
+        closing: {
+          text: "Strategy isn't a luxury; it's the bridge between competence and influence.",
+          cta: "Engineer your strategy today."
         }
-      ],
-      closing: {
-        text: "The plateau is only permanent if you stop trying to climb. It’s time to stop working harder and start working smarter.",
-        cta: "Start your Webolution today."
+      },
+      "hard-work-not-enough": {
+        title: "Hard Work Isn’t Enough: The Strategy Mid-Career Devs Need",
+        heroHook: "In your 20s, 'grinding' was a badge of honor. In your mid-career, it's often a sign that you're stuck in a 'Labor Trap.'",
+        silentPlateau: {
+          heading: "The High-Impact Growth Phase",
+          text: "Growth in senior roles is about ROI, not effort. If you spend 10 hours on a feature that adds minimal business value, you aren't growing—you're just busy."
+        },
+        hardWorkVsStrategy: {
+          heading: "From Labor to Leverage",
+          text: "Leverage is doing work that has a disproportionate impact relative to the input. This is how you scale your value without scaling your hours.",
+          myth: "First in, last out wins.",
+          truth: "Impact per hour wins."
+        },
+        realReason: {
+          heading: "The Growth Inhibitors",
+          points: [
+            "The Comfort Zone: Getting too good at things that no longer challenge you.",
+            "Yes-Man Syndrome: Taking on every request instead of prioritizing high-impact work.",
+            "Missing Domain Knowledge: Understanding the 'how' but never asking the 'why' of the business.",
+            "Ineffective Communication: Failing to translate technical wins into business successes."
+          ]
+        },
+        webolutionIntro: {
+          heading: "Webolution Growth",
+          text: "We help you identify the high-leverage activities that move the needle for your company and your career simultaneously."
+        },
+        framework: [
+          { phase: "Impact Mapping", text: "Linking your daily tasks to high-level company goals." },
+          { phase: "Skill Stacking", text: "Combining your tech skills with domain expertise to become irreplaceable." },
+          { phase: "Communication Mastery", text: "Learning the language of stakeholders to win buy-in and recognition." },
+          { phase: "Scale", text: "Automating or delegating low-value tasks to focus on the 20% that yields 80% results." }
+        ],
+        closing: {
+          text: "Stop being the engine and start being the architect of the machine.",
+          cta: "Scale your impact now."
+        }
+      },
+      "experienced-stuck": {
+        title: "Why Experienced Developers Feel Stuck After 7+ Years",
+        heroHook: "Stagnation is a psychological state before it's a professional one. After 7 years, the 'Imposter Syndrome' often evolves into 'Plateau Panic.'",
+        silentPlateau: {
+          heading: "The Mindset Shift",
+          text: "You've reached a level of competence where you can do your job with your eyes closed. This is the danger zone. Comfort is the graveyard of ambition."
+        },
+        hardWorkVsStrategy: {
+          heading: "Recalibrating Your Internal Compass",
+          text: "To move to the next level, you have to shed the identity of the 'Coder' and adopt the identity of the 'Solution Architect' and 'Leader'.",
+          myth: "I need to know everything technical.",
+          truth: "I need to know what matters most."
+        },
+        realReason: {
+          heading: "Psychological Blockers",
+          points: [
+            "Fear of Obsolescence: The stress of keeping up with every new library.",
+            "Expert's Pride: Being unwilling to be a 'beginner' in new non-technical domains.",
+            "Burnout Residue: Carrying the fatigue of a thousand sprints into your career planning.",
+            "External Validation Trap: Relying on performance reviews instead of internal goals."
+          ]
+        },
+        webolutionIntro: {
+          heading: "Webolution Mindset",
+          text: "Webolution helps you rebuild your confidence from the ground up, focusing on your deep experience as a foundation for future leadership."
+        },
+        framework: [
+          { phase: "Clarity Deep-Dive", text: "Separating what you're good at from what you actually want to do." },
+          { phase: "Confidence Rebuild", text: "Recognizing your seniority as a strategic asset, not just a label." },
+          { phase: "Risk Management", text: "Learning how to take calculated career risks without risking your security." },
+          { phase: "Sustainability", text: "Building a career that fuels you rather than drains you." }
+        ],
+        closing: {
+          text: "The ceiling you feel is just a floor you haven't stood on yet.",
+          cta: "Change your mindset today."
+        }
       }
     }
   },
