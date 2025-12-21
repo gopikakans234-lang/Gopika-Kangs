@@ -326,6 +326,62 @@ export const CONTENT = {
       }
     }
   },
+  ebook: {
+    hero: {
+      heading: "Career Growth eBooks for Mid-Career Web Developers",
+      subHeading: "Strategic guidance for developers who feel stuck",
+      intro: "Webolution publishes guides specifically for developers with 7+ years of experience who need to move beyond technical competence into strategic mastery."
+    },
+    list: [
+      {
+        id: "webolution-blueprint",
+        title: "Webolution – A Blueprint for Mid-Career Web Developers",
+        summary: "A career-engineering guide for developers with 7+ years of experience who feel stuck.",
+        cover: "/book_bundle.svg",
+        category: "Strategy"
+      }
+    ],
+    details: {
+      "webolution-blueprint": {
+        title: "Webolution – A Blueprint for Mid-Career Web Developers",
+        hero: {
+          heading: "For Mid-Career Web Developers",
+          subHeading: "7+ years in web development… are you feeling stuck in the same place?",
+          support: "It’s time to break the slowdown"
+        },
+        problem: {
+          text: "You’re skilled. You’re experienced. You’re dedicated and reliable. But lately, you’re not seeing the promotions or growth you deserve.\n\nThe problem is not lack of talent. What’s missing is clarity, strategy, and execution at the right level.",
+          urgency: {
+            heading: "The longer you wait, the harder it becomes",
+            bullets: [
+              "The industry shifts every few months",
+              "Passion quietly turns into routine",
+              "Fear of being left behind grows",
+              "Junior developers seem to move faster",
+              "“Learn more, work harder” stops working"
+            ]
+          }
+        },
+        advice: {
+          heading: "Why Old Advice Fails",
+          quote: "Just learn more and work harder.",
+          myth: "Hard work = promotion",
+          truth: "Strategy + visibility = leverage"
+        },
+        solution: {
+          heading: "Webolution: Your Career Engineering System",
+          description: "Webolution is designed for developers who feel stuck. It focuses on clarity, confidence, and making you an in-demand asset.",
+          phases: [
+            { id: 1, title: "Phase 1: Debug", desc: "Identify internal and external blockers slowing career growth." },
+            { id: 2, title: "Phase 2: Design", desc: "Build a personalized roadmap aligned with strengths, passion, and industry demand." },
+            { id: 3, title: "Phase 3: Develop & Deploy", desc: "Execute with clarity, ship meaningful work, and create visible results." },
+            { id: 4, title: "Phase 4: Deliver", desc: "Build influence, compound impact, and grow continuously over time." }
+          ]
+        },
+        cta: "Download the Webolution eBook"
+      }
+    }
+  },
   faq: {
     heading: "Frequently Asked Questions",
     items: [

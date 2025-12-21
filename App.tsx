@@ -9,15 +9,18 @@ import { BlogList } from './components/BlogList';
 import { BlogDetail } from './components/BlogDetail';
 import { PodcastList } from './components/PodcastList';
 import { PodcastDetail } from './components/PodcastDetail';
+import { EBookList } from './components/EBookList';
+import { EBookDetail } from './components/EBookDetail';
 import { Footer } from './components/Footer';
 import { LeadModal } from './components/LeadModal';
 
-type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail';
+type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail' | 'ebooks' | 'ebook-detail';
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>('home');
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [selectedPodcastId, setSelectedPodcastId] = useState<string | null>(null);
+  const [selectedEBookId, setSelectedEBookId] = useState<string | null>(null);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
 
   // Scroll to top when view changes
@@ -32,18 +35,28 @@ const App: React.FC = () => {
     setView('home');
     setSelectedPostId(null);
     setSelectedPodcastId(null);
+    setSelectedEBookId(null);
   };
   
   const navigateToBlog = () => {
     setView('blog');
     setSelectedPostId(null);
     setSelectedPodcastId(null);
+    setSelectedEBookId(null);
   };
 
   const navigateToPodcast = () => {
     setView('podcast');
     setSelectedPostId(null);
     setSelectedPodcastId(null);
+    setSelectedEBookId(null);
+  };
+
+  const navigateToEBooks = () => {
+    setView('ebooks');
+    setSelectedPostId(null);
+    setSelectedPodcastId(null);
+    setSelectedEBookId(null);
   };
   
   const navigateToPost = (postId: string) => {
@@ -54,6 +67,11 @@ const App: React.FC = () => {
   const navigateToPodcastDetail = (podcastId: string) => {
     setSelectedPodcastId(podcastId);
     setView('podcast-detail');
+  };
+
+  const navigateToEBookDetail = (ebookId: string) => {
+    setSelectedEBookId(ebookId);
+    setView('ebook-detail');
   };
 
   return (
@@ -68,24 +86,30 @@ const App: React.FC = () => {
         </div>
         
         <div className="flex gap-4 sm:gap-8 items-center">
-          <div className="flex gap-4 sm:gap-6 items-center">
+          <div className="flex gap-3 sm:gap-6 items-center">
             <button 
               onClick={navigateToHome} 
-              className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
+              className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
             >
               Home
             </button>
             <button 
               onClick={navigateToBlog} 
-              className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'blog' || view === 'blog-post' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
+              className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'blog' || view === 'blog-post' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
             >
               Blog
             </button>
             <button 
               onClick={navigateToPodcast} 
-              className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'podcast' || view === 'podcast-detail' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
+              className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'podcast' || view === 'podcast-detail' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
             >
               Podcast
+            </button>
+            <button 
+              onClick={navigateToEBooks} 
+              className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'ebooks' || view === 'ebook-detail' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
+            >
+              eBooks
             </button>
           </div>
         </div>
@@ -128,6 +152,21 @@ const App: React.FC = () => {
           <PodcastDetail 
             podcastId={selectedPodcastId}
             onBack={navigateToPodcast}
+            onCtaClick={openLeadModal}
+          />
+        )}
+
+        {view === 'ebooks' && (
+          <EBookList 
+            onViewDetails={navigateToEBookDetail}
+            onCtaClick={openLeadModal}
+          />
+        )}
+
+        {view === 'ebook-detail' && selectedEBookId && (
+          <EBookDetail 
+            ebookId={selectedEBookId}
+            onBack={navigateToEBooks}
             onCtaClick={openLeadModal}
           />
         )}
