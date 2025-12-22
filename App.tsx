@@ -14,7 +14,7 @@ import { EBookDetail } from './components/EBookDetail';
 import { Footer } from './components/Footer';
 import { LeadModal } from './components/LeadModal';
 
-type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail' | 'ebooks' | 'ebook-detail';
+type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail' | 'ebook' | 'ebook-detail';
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>('home');
@@ -52,8 +52,8 @@ const App: React.FC = () => {
     setSelectedEBookId(null);
   };
 
-  const navigateToEBooks = () => {
-    setView('ebooks');
+  const navigateToEBook = () => {
+    setView('ebook');
     setSelectedPostId(null);
     setSelectedPodcastId(null);
     setSelectedEBookId(null);
@@ -106,10 +106,10 @@ const App: React.FC = () => {
               Podcast
             </button>
             <button 
-              onClick={navigateToEBooks} 
-              className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'ebooks' || view === 'ebook-detail' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
+              onClick={navigateToEBook} 
+              className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'ebook' || view === 'ebook-detail' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
             >
-              eBooks
+              eBook
             </button>
           </div>
         </div>
@@ -156,7 +156,7 @@ const App: React.FC = () => {
           />
         )}
 
-        {view === 'ebooks' && (
+        {view === 'ebook' && (
           <EBookList 
             onViewDetails={navigateToEBookDetail}
             onCtaClick={openLeadModal}
@@ -166,7 +166,7 @@ const App: React.FC = () => {
         {view === 'ebook-detail' && selectedEBookId && (
           <EBookDetail 
             ebookId={selectedEBookId}
-            onBack={navigateToEBooks}
+            onBack={navigateToEBook}
             onCtaClick={openLeadModal}
           />
         )}

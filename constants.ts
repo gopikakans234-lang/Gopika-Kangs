@@ -1,5 +1,6 @@
 
 export const CONTENT = {
+  // ... (keeping previous sections as they are)
   hero: {
     heading: "7+ years in web development..\nare you feeling stuck in the same place?",
     subHeading: "It's time to break the slowdown",
@@ -299,7 +300,7 @@ export const CONTENT = {
     details: {
       "start-your-webolution": {
         title: "Start Your Webolution",
-        audioUrl: "#", // Placeholder
+        audioUrl: "#", 
         description: "You’re skilled. You’re experienced. But your career isn’t moving the way it should.\n\nYou’re not stuck because you lack talent. You might already have the skills. What’s missing is clarity, strategy, and execution at the right level.",
         talkingPoints: [
           "The industry shifts every few months",
@@ -323,62 +324,212 @@ export const CONTENT = {
           ]
         },
         cta: "Start Your Webolution"
+      },
+      "hard-work-not-enough-pod": {
+        title: "Why Hard Work Isn’t Enough Anymore",
+        audioUrl: "#",
+        description: "After 7 years, simply doing what you're told is a baseline, not a breakthrough. This episode explores why productivity without positioning is a recipe for stagnation.",
+        talkingPoints: [
+          "The 'Reliability Trap': Why being too reliable makes you unpromotable",
+          "Shift from 'Output' to 'Outcome' focus",
+          "Managing up: How to communicate value, not just status",
+          "The myth of the 'Objective Meritocracy'",
+          "Strategic laziness: Prioritizing the 20% that matters"
+        ],
+        oldAdvice: {
+          myth: "If I work hard, someone will notice and reward me.",
+          truth: "If I don't advocate for my value, I will be commoditized."
+        },
+        blueprint: {
+          heading: "The Strategy Pivot",
+          summary: "Learn to stop treating your job like a series of tickets and start treating it like a strategic partnership.",
+          phases: [
+            { id: 1, title: "Audit", desc: "Identify which tasks are 'busy work' vs 'value work'." },
+            { id: 2, title: "Position", desc: "Align your daily work with high-level company goals." },
+            { id: 3, title: "Advocate", desc: "Learn to speak the language of business stakeholders." },
+            { id: 4, title: "Leverage", desc: "Use your wins to negotiate more autonomy and influence." }
+          ]
+        },
+        cta: "Break the Effort Trap"
+      },
+      "mid-career-slowdown": {
+        title: "The Mid-Career Slowdown Explained",
+        audioUrl: "#",
+        description: "Is the market changing, or are you? We look at the 'Plateau Panic' and the structural reasons why the 7-10 year mark is the hardest hurdle in a dev's career.",
+        talkingPoints: [
+          "The 7-Year Ceiling: Why technical growth alone stops yielding returns",
+          "Salary caps and the 'Golden Handcuffs' dilemma",
+          "How 'Senior' title inflation masks real stagnation",
+          "The danger of becoming an expert in a legacy niche",
+          "Internalized ageism in the software industry"
+        ],
+        oldAdvice: {
+          myth: "My years of experience automatically increase my market value.",
+          truth: "My ability to solve complex business problems increases my value."
+        },
+        blueprint: {
+          heading: "The Analysis Framework",
+          summary: "A step-by-step diagnostic to find exactly where your career engine is leaking power.",
+          phases: [
+            { id: 1, title: "Scan", desc: "Analyze the current market demand for your specific stack." },
+            { id: 2, title: "Diagnose", desc: "Find the gap between your current role and your desired peak." },
+            { id: 3, title: "Refactor", desc: "Update your 'Internal OS' - your habits and beliefs." },
+            { id: 4, title: "Benchmark", desc: "Set clear, measurable growth metrics for the next 12 months." }
+          ]
+        },
+        cta: "Analyze Your Plateau"
+      },
+      "strategy-over-skills": {
+        title: "Strategy Over Skills",
+        audioUrl: "#",
+        description: "Stop learning for the sake of learning. We discuss how mid-career devs waste time on framework-hopping when they should be building domain authority.",
+        talkingPoints: [
+          "Framework Fatigue: The high cost of chasing every new library",
+          "Stack-Agnostic Mastery: Moving up the abstraction layer",
+          "The Power of 'Product Thinking' for Engineers",
+          "Building a 'Personal Moat' that no AI can duplicate",
+          "Why your soft skills are actually your hardest skills"
+        ],
+        oldAdvice: {
+          myth: "I need to know everything to be a Lead Developer.",
+          truth: "I need to know how to enable others to know everything."
+        },
+        blueprint: {
+          heading: "The Growth Architecture",
+          summary: "Move from being a 'User' of technology to being an 'Architect' of value.",
+          phases: [
+            { id: 1, title: "Prune", desc: "Stop spending time on skills that have low market ROI." },
+            { id: 2, title: "Focus", desc: "Double down on a high-leverage domain expertise." },
+            { id: 3, title: "stacking", desc: "Combine tech skills with deep business context." },
+            { id: 4, title: "Amplify", desc: "Use your unique skill stack to solve 'impossible' problems." }
+          ]
+        },
+        cta: "Master Strategic Growth"
+      },
+      "future-proof-career": {
+        title: "Designing a Future-Proof Developer Career",
+        audioUrl: "#",
+        description: "In an era of AI and shifting tech stacks, how do you ensure you're still relevant 10 years from now? We apply engineering principles to long-term career design.",
+        talkingPoints: [
+          "Antifragile Career Design: Thriving in tech volatility",
+          "The 'Network API': Building professional redundancy",
+          "AI-Augmentation vs. AI-Obsolescence",
+          "Designing for Autonomy: The ultimate career endgame",
+          "Legacy building: Mentorship as a career multiplier"
+        ],
+        oldAdvice: {
+          myth: "Job security comes from staying at a big, stable company.",
+          truth: "Job security comes from your 'In-Demand' status in the open market."
+        },
+        blueprint: {
+          heading: "The Future Blueprint",
+          summary: "Architect a career that isn't just surviving the future, but actively shaping it.",
+          phases: [
+            { id: 1, title: "Model", desc: "Define your ideal 'End State' (e.g., Staff Eng, CTO, Solopreneur)." },
+            { id: 2, title: "Bridge", desc: "Build the missing links between today and that future." },
+            { id: 3, title: "Insulate", desc: "Create financial and professional safety nets." },
+            { id: 4, title: "Launch", desc: "Execute the transition into your designed future." }
+          ]
+        },
+        cta: "Architect Your Future"
       }
     }
   },
   ebook: {
-    hero: {
-      heading: "Career Growth eBooks for Mid-Career Web Developers",
-      subHeading: "Strategic guidance for developers who feel stuck",
-      intro: "Webolution publishes guides specifically for developers with 7+ years of experience who need to move beyond technical competence into strategic mastery."
+    library: {
+      heading: "Webolution Library",
+      subHeading: "Career blueprints for mid-career web developers"
     },
     list: [
       {
         id: "webolution-blueprint",
-        title: "Webolution – A Blueprint for Mid-Career Web Developers",
-        summary: "A career-engineering guide for developers with 7+ years of experience who feel stuck.",
+        title: "Webolution",
+        subTitle: "A Blueprint for Mid-Career Web Developers",
+        meta: "7+ years • Career Strategy • eBook",
+        summary: "A career-engineering system for developers who feel stuck and want clarity, strategy, and growth.",
         cover: "/book_bundle.svg",
         category: "Strategy"
       }
     ],
     details: {
       "webolution-blueprint": {
-        title: "Webolution – A Blueprint for Mid-Career Web Developers",
-        hero: {
-          heading: "For Mid-Career Web Developers",
-          subHeading: "7+ years in web development… are you feeling stuck in the same place?",
-          support: "It’s time to break the slowdown"
-        },
-        problem: {
-          text: "You’re skilled. You’re experienced. You’re dedicated and reliable. But lately, you’re not seeing the promotions or growth you deserve.\n\nThe problem is not lack of talent. What’s missing is clarity, strategy, and execution at the right level.",
-          urgency: {
-            heading: "The longer you wait, the harder it becomes",
-            bullets: [
-              "The industry shifts every few months",
-              "Passion quietly turns into routine",
-              "Fear of being left behind grows",
-              "Junior developers seem to move faster",
-              "“Learn more, work harder” stops working"
-            ]
+        title: "Webolution",
+        chapters: [
+          {
+            id: "intro",
+            title: "Introduction",
+            content: {
+              heading: "FOR MID-CAREER WEB DEVELOPERS",
+              subHeading: "7+ years in web development… are you feeling stuck in the same place?",
+              support: "It’s time to break the slowdown.",
+              narrative: [
+                "You’re skilled. You’re experienced. But your career isn’t moving the way it should.",
+                "You’re not stuck because you lack talent. You already have the skills.",
+                "What’s missing is clarity, strategy, and execution at the right level."
+              ]
+            }
+          },
+          {
+            id: "stagnation",
+            title: "The Problem: Career Stagnation",
+            content: {
+              heading: "The longer you wait, the harder it becomes",
+              bullets: [
+                "The industry shifts every few months",
+                "Passion quietly turns into routine",
+                "Fear of being left behind grows",
+                "Junior developers seem to move faster",
+                "“Learn more, work harder” stops working"
+              ]
+            }
+          },
+          {
+            id: "myth",
+            title: "Why Old Advice Fails",
+            content: {
+              quote: "Just learn more and work harder.",
+              explanation: "This myth keeps developers stuck. Real growth requires strategy, visibility, influence, and mindset.",
+              myth: "Hard work = promotion",
+              truth: "Strategy + visibility = leverage"
+            }
+          },
+          {
+            id: "blueprint-debug",
+            title: "Phase 1: Debug",
+            content: {
+              heading: "Unlock what’s quietly holding you back",
+              description: "Identify internal and external blockers slowing your career growth. We look at hidden psychological barriers and market positioning gaps."
+            }
+          },
+          {
+            id: "blueprint-design",
+            title: "Phase 2: Design",
+            content: {
+              heading: "Architect your next-level career",
+              description: "Build a personalized roadmap aligned with your unique strengths, passion, and high-demand industry roles."
+            }
+          },
+          {
+            id: "blueprint-deploy",
+            title: "Phase 3: Develop & Deploy",
+            content: {
+              heading: "Give birth to your dream career",
+              description: "Execute with clarity, ship meaningful work, and create visible results that get noticed by stakeholders."
+            }
+          },
+          {
+            id: "blueprint-deliver",
+            title: "Phase 4: Deliver",
+            content: {
+              heading: "Leverage compound impact",
+              description: "Build influence, expand your impact, and establish a growth engine that scales continuously over time."
+            }
           }
-        },
-        advice: {
-          heading: "Why Old Advice Fails",
-          quote: "Just learn more and work harder.",
-          myth: "Hard work = promotion",
-          truth: "Strategy + visibility = leverage"
-        },
-        solution: {
-          heading: "Webolution: Your Career Engineering System",
-          description: "Webolution is designed for developers who feel stuck. It focuses on clarity, confidence, and making you an in-demand asset.",
-          phases: [
-            { id: 1, title: "Phase 1: Debug", desc: "Identify internal and external blockers slowing career growth." },
-            { id: 2, title: "Phase 2: Design", desc: "Build a personalized roadmap aligned with strengths, passion, and industry demand." },
-            { id: 3, title: "Phase 3: Develop & Deploy", desc: "Execute with clarity, ship meaningful work, and create visible results." },
-            { id: 4, title: "Phase 4: Deliver", desc: "Build influence, compound impact, and grow continuously over time." }
-          ]
-        },
-        cta: "Download the Webolution eBook"
+        ],
+        footer: {
+          cta: "Continue your Webolution journey",
+          options: ["Download PDF", "Bookmark Progress"]
+        }
       }
     }
   },
@@ -395,7 +546,7 @@ export const CONTENT = {
       },
       {
         question: "How is Webolution different from other career books?",
-        answer: "Most career books tell you to learn more, work harder, or be more confident. Webolution goes deeper. It helps you debug the hidden blockers slowing your growth, design a roadmap tailored to you, deploy focused action, and deliver results that compound over time. It’s not motivation—it’s orientation."
+        answer: "Most career books tell you to learn more, work harder, or be more delete. Webolution goes deeper. It helps you debug the hidden blockers slowing your growth, design a roadmap tailored to you, deploy focused action, and deliver results that compound over time. It’s not motivation—it’s orientation."
       },
       {
         question: "What is the Webolution framework?",
