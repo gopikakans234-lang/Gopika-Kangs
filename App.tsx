@@ -11,10 +11,11 @@ import { PodcastList } from './components/PodcastList';
 import { PodcastDetail } from './components/PodcastDetail';
 import { EBookList } from './components/EBookList';
 import { EBookDetail } from './components/EBookDetail';
+import { TestSession } from './components/TestSession';
 import { Footer } from './components/Footer';
 import { LeadModal } from './components/LeadModal';
 
-type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail' | 'ebook' | 'ebook-detail';
+type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail' | 'ebook' | 'ebook-detail' | 'test' | 'results';
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>('home');
@@ -23,7 +24,6 @@ const App: React.FC = () => {
   const [selectedEBookId, setSelectedEBookId] = useState<string | null>(null);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
 
-  // Scroll to top when view changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [view]);
@@ -31,33 +31,11 @@ const App: React.FC = () => {
   const openLeadModal = () => setIsLeadModalOpen(true);
   const closeLeadModal = () => setIsLeadModalOpen(false);
 
-  const navigateToHome = () => {
-    setView('home');
-    setSelectedPostId(null);
-    setSelectedPodcastId(null);
-    setSelectedEBookId(null);
-  };
-  
-  const navigateToBlog = () => {
-    setView('blog');
-    setSelectedPostId(null);
-    setSelectedPodcastId(null);
-    setSelectedEBookId(null);
-  };
-
-  const navigateToPodcast = () => {
-    setView('podcast');
-    setSelectedPostId(null);
-    setSelectedPodcastId(null);
-    setSelectedEBookId(null);
-  };
-
-  const navigateToEBook = () => {
-    setView('ebook');
-    setSelectedPostId(null);
-    setSelectedPodcastId(null);
-    setSelectedEBookId(null);
-  };
+  const navigateToHome = () => setView('home');
+  const navigateToBlog = () => setView('blog');
+  const navigateToPodcast = () => setView('podcast');
+  const navigateToEBook = () => setView('ebook');
+  const navigateToTest = () => setView('test');
   
   const navigateToPost = (postId: string) => {
     setSelectedPostId(postId);
@@ -87,30 +65,11 @@ const App: React.FC = () => {
         
         <div className="flex gap-4 sm:gap-8 items-center">
           <div className="flex gap-3 sm:gap-6 items-center">
-            <button 
-              onClick={navigateToHome} 
-              className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
-            >
-              Home
-            </button>
-            <button 
-              onClick={navigateToBlog} 
-              className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'blog' || view === 'blog-post' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
-            >
-              Blog
-            </button>
-            <button 
-              onClick={navigateToPodcast} 
-              className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'podcast' || view === 'podcast-detail' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
-            >
-              Podcast
-            </button>
-            <button 
-              onClick={navigateToEBook} 
-              className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'ebook' || view === 'ebook-detail' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}
-            >
-              eBook
-            </button>
+            <button onClick={navigateToHome} className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>Home</button>
+            <button onClick={navigateToBlog} className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view.startsWith('blog') ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>Blog</button>
+            <button onClick={navigateToPodcast} className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view.startsWith('podcast') ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>Podcast</button>
+            <button onClick={navigateToEBook} className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view.startsWith('ebook') ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>eBook</button>
+            <button onClick={navigateToTest} className={`px-3 py-1 bg-brand-green/10 border border-brand-green/30 text-brand-green text-[10px] sm:text-xs font-black uppercase rounded-full transition-all hover:bg-brand-green hover:text-navy-900`}>Start quiz</button>
           </div>
         </div>
       </nav>
@@ -118,7 +77,7 @@ const App: React.FC = () => {
       <main className="relative w-full">
         {view === 'home' && (
           <>
-            <Hero onCtaClick={openLeadModal} />
+            <Hero onCtaClick={openLeadModal} onSecondaryCtaClick={navigateToTest} />
             <RealityCheck />
             <MythTruth />
             <Solution onCtaClick={openLeadModal} />
@@ -126,55 +85,24 @@ const App: React.FC = () => {
           </>
         )}
 
-        {view === 'blog' && (
-          <BlogList 
-            onReadMore={navigateToPost} 
-            onCtaClick={openLeadModal} 
-          />
-        )}
-
-        {view === 'blog-post' && selectedPostId && (
-          <BlogDetail 
-            postId={selectedPostId}
-            onBack={navigateToBlog} 
-            onCtaClick={openLeadModal} 
-          />
-        )}
-
-        {view === 'podcast' && (
-          <PodcastList 
-            onListenNow={navigateToPodcastDetail} 
-            onCtaClick={openLeadModal}
-          />
-        )}
-
-        {view === 'podcast-detail' && selectedPodcastId && (
-          <PodcastDetail 
-            podcastId={selectedPodcastId}
-            onBack={navigateToPodcast}
-            onCtaClick={openLeadModal}
-          />
-        )}
-
-        {view === 'ebook' && (
-          <EBookList 
-            onViewDetails={navigateToEBookDetail}
-            onCtaClick={openLeadModal}
-          />
-        )}
-
-        {view === 'ebook-detail' && selectedEBookId && (
-          <EBookDetail 
-            ebookId={selectedEBookId}
-            onBack={navigateToEBook}
-            onCtaClick={openLeadModal}
-          />
+        {view === 'blog' && <BlogList onReadMore={navigateToPost} onCtaClick={openLeadModal} />}
+        {view === 'blog-post' && selectedPostId && <BlogDetail postId={selectedPostId} onBack={navigateToBlog} onCtaClick={openLeadModal} />}
+        {view === 'podcast' && <PodcastList onListenNow={navigateToPodcastDetail} onCtaClick={openLeadModal} />}
+        {view === 'podcast-detail' && selectedPodcastId && <PodcastDetail podcastId={selectedPodcastId} onBack={navigateToPodcast} onCtaClick={openLeadModal} />}
+        {view === 'ebook' && <EBookList onViewDetails={navigateToEBookDetail} onCtaClick={openLeadModal} />}
+        {view === 'ebook-detail' && selectedEBookId && <EBookDetail ebookId={selectedEBookId} onBack={navigateToEBook} onCtaClick={openLeadModal} />}
+        
+        {view === 'test' && <TestSession onComplete={() => setView('results')} onCancel={navigateToHome} />}
+        {view === 'results' && (
+          <div className="pt-40 pb-20 text-center px-6">
+            <h1 className="text-4xl md:text-6xl font-black mb-6">Assessment Complete!</h1>
+            <p className="text-xl text-text-muted mb-10 max-w-2xl mx-auto">We're analyzing your data to architect your custom career blueprint. Join the waitlist to receive your full persona analysis.</p>
+            <LeadModal isOpen={true} onClose={navigateToHome} />
+          </div>
         )}
       </main>
 
-      <Footer onCtaClick={openLeadModal} />
-      
-      <LeadModal isOpen={isLeadModalOpen} onClose={closeLeadModal} />
+      {view !== 'test' && <Footer onCtaClick={openLeadModal} />}
     </div>
   );
 };

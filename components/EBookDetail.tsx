@@ -174,12 +174,12 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
               {currentChapter.id === 'intro' && (
                 <div className="space-y-12">
                    <div className="text-center space-y-4 mb-20">
-                     <h2 className="text-2xl md:text-3xl font-black text-brand-green uppercase tracking-tight">{currentChapter.content.heading}</h2>
-                     <p className="text-xl md:text-2xl font-bold italic">{currentChapter.content.subHeading}</p>
-                     <p className="text-lg text-navy-400 font-medium">{currentChapter.content.support}</p>
+                     <h2 className="text-2xl md:text-3xl font-black text-brand-green uppercase tracking-tight">{(currentChapter.content as any).heading}</h2>
+                     <p className="text-xl md:text-2xl font-bold italic">{(currentChapter.content as any).subHeading}</p>
+                     <p className="text-lg text-navy-400 font-medium">{(currentChapter.content as any).support}</p>
                    </div>
                    <div className="space-y-8 font-serif italic text-2xl md:text-3xl border-l-4 border-navy-100 pl-8 text-navy-900/70">
-                     {currentChapter.content.narrative.map((p, i) => <p key={i}>{p}</p>)}
+                     {(currentChapter.content as any).narrative.map((p: string, i: number) => <p key={i}>{p}</p>)}
                    </div>
                 </div>
               )}
@@ -187,9 +187,10 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
               {/* Stagnation Chapter */}
               {currentChapter.id === 'stagnation' && (
                 <div className="space-y-12">
-                   <h2 className="text-3xl md:text-4xl font-black text-center">{currentChapter.content.heading}</h2>
+                   <h2 className="text-3xl md:text-4xl font-black text-center">{(currentChapter.content as any).heading}</h2>
                    <div className="grid gap-4 mt-12">
-                     {currentChapter.content.bullets.map((bullet, i) => (
+                     {/* Use type assertion to handle polymorphic content structure */}
+                     {(currentChapter.content as any).bullets.map((bullet: string, i: number) => (
                        <div key={i} className="flex items-center gap-4 p-6 bg-navy-50 rounded-2xl">
                          <div className="w-2 h-2 rounded-full bg-brand-green" />
                          <span className="text-xl font-bold">{bullet}</span>
@@ -202,20 +203,21 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
               {/* Myth/Truth Chapter */}
               {currentChapter.id === 'myth' && (
                 <div className="space-y-16">
+                   {/* Fix Property access errors via content type assertion */}
                    <div className="bg-navy-50 p-12 md:p-16 rounded-[40px] text-center italic font-serif text-3xl md:text-4xl leading-snug">
-                     "{currentChapter.content.quote}"
+                     "{(currentChapter.content as any).quote}"
                    </div>
                    <p className="text-xl text-center max-w-lg mx-auto text-navy-500 font-medium">
-                     {currentChapter.content.explanation}
+                     {(currentChapter.content as any).explanation}
                    </p>
                    <div className="grid md:grid-cols-2 gap-8 py-10">
                       <div className="p-8 border-2 border-red-500/10 rounded-3xl text-center space-y-4">
                         <span className="text-[10px] font-black uppercase text-red-500 tracking-widest">The Myth</span>
-                        <p className="text-2xl font-bold">"{currentChapter.content.myth}"</p>
+                        <p className="text-2xl font-bold">"{(currentChapter.content as any).myth}"</p>
                       </div>
                       <div className="p-8 border-2 border-brand-green/20 rounded-3xl text-center space-y-4 shadow-xl shadow-brand-green/5">
                         <span className="text-[10px] font-black uppercase text-brand-green tracking-widest">The Truth</span>
-                        <p className="text-2xl font-bold">"{currentChapter.content.truth}"</p>
+                        <p className="text-2xl font-bold">"{(currentChapter.content as any).truth}"</p>
                       </div>
                    </div>
                 </div>
@@ -227,9 +229,10 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
                    <div className="inline-flex items-center gap-2 text-brand-green font-black uppercase tracking-widest text-xs">
                      <BookOpen size={16} /> Strategy Node
                    </div>
-                   <h2 className="text-4xl md:text-5xl font-black font-serif leading-tight">{currentChapter.content.heading}</h2>
+                   <h2 className="text-4xl md:text-5xl font-black font-serif leading-tight">{(currentChapter.content as any).heading}</h2>
+                   {/* Cast as any to resolve missing 'description' property error on intro-shaped content */}
                    <p className="text-2xl md:text-3xl text-navy-500 leading-relaxed">
-                     {currentChapter.content.description}
+                     {(currentChapter.content as any).description}
                    </p>
                 </div>
               )}
