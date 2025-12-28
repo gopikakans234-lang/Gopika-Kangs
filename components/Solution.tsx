@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { CONTENT } from '../constants';
 import { Section } from './Section';
@@ -58,7 +59,7 @@ export const Solution: React.FC<SolutionProps> = ({ onCtaClick }) => {
             className="space-y-4"
           >
             {solution.intro && solution.intro.map((text, i) => (
-               <p key={i} className={`text-lg md:text-2xl leading-relaxed ${i === 0 ? 'text-white font-normal' : 'text-text-muted'}`}>
+               <p key={i} className={`text-base md:text-xl leading-relaxed ${i === 0 ? 'text-white font-normal' : 'text-text-muted'}`}>
                  {text}
                </p>
             ))}

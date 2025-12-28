@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { CONTENT } from '../constants';
 import { Section } from './Section';
@@ -18,7 +19,7 @@ export const Problem: React.FC<ProblemProps> = ({ onCtaClick }) => {
           
           {problem.highlight && (
             <motion.h3 
-              className="text-4xl md:text-7xl font-black text-brand-green uppercase leading-[0.9] md:leading-[0.9] mb-8 md:mb-12 tracking-tighter"
+              className="text-3xl md:text-6xl font-black text-brand-green uppercase leading-[0.9] md:leading-[0.9] mb-8 md:mb-12 tracking-tighter"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -39,7 +40,7 @@ export const Problem: React.FC<ProblemProps> = ({ onCtaClick }) => {
               {problem.description}
             </p>
             {problem.description2 && (
-              <p className="text-3xl md:text-6xl text-white leading-[0.95] font-black tracking-tighter">
+              <p className="text-2xl md:text-5xl text-white leading-[0.95] font-black tracking-tighter">
                 {problem.description2}
               </p>
             )}
@@ -71,11 +72,11 @@ export const Problem: React.FC<ProblemProps> = ({ onCtaClick }) => {
           >
             <div>
               {agitate.heading && (
-                <h4 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+                <h4 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
                   {agitate.heading}
                 </h4>
               )}
-              <p className="text-lg md:text-xl text-text-muted leading-relaxed font-normal">
+              <p className="text-base md:text-lg text-text-muted leading-relaxed font-normal">
                 {agitate.text}
               </p>
             </div>

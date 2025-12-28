@@ -28,11 +28,11 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick, onSecondaryCtaClick }) =
           </span>
         </motion.div>
 
-        <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 md:mb-8 leading-[1.1] tracking-tight max-w-5xl px-2" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
+        <motion.h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 md:mb-8 leading-[1.1] tracking-tight max-w-5xl px-2" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
           {hero.heading}
         </motion.h1>
         
-        <motion.h2 className="text-base sm:text-lg md:text-2xl font-bold text-brand-green uppercase tracking-widest mb-8 md:mb-10 px-4" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+        <motion.h2 className="text-sm sm:text-base md:text-xl font-bold text-brand-green uppercase tracking-widest mb-8 md:mb-10 px-4" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
           {hero.subHeading}
         </motion.h2>
 

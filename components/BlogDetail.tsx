@@ -47,11 +47,11 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ postId, onBack, onCtaCli
           >
             {/* 1. Hero Section */}
             <header className="space-y-6 md:space-y-8">
-              <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-[1.1] tracking-tight">
                 {postDetails.title}
               </h1>
               <div className="p-6 md:p-8 bg-brand-green/10 border-l-4 border-brand-green rounded-r-2xl">
-                <p className="text-lg md:text-2xl text-white font-medium italic leading-relaxed">
+                <p className="text-base md:text-xl text-white font-medium italic leading-relaxed">
                   "{postDetails.heroHook}"
                 </p>
               </div>
@@ -59,38 +59,38 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ postId, onBack, onCtaCli
 
             {/* 2. Section: The Silent Plateau / Strategy Shift */}
             <section className="space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+              <h2 className="text-xl md:text-3xl font-bold text-white tracking-tight">
                 {postDetails.silentPlateau.heading}
               </h2>
-              <p className="text-lg md:text-xl text-text-muted leading-relaxed">
+              <p className="text-base md:text-lg text-text-muted leading-relaxed">
                 {postDetails.silentPlateau.text}
               </p>
             </section>
 
             {/* 3. Section: Hard Work vs Strategy */}
             <section className="space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+              <h2 className="text-xl md:text-3xl font-bold text-white tracking-tight">
                 {postDetails.hardWorkVsStrategy.heading}
               </h2>
-              <p className="text-lg md:text-xl text-text-muted leading-relaxed">
+              <p className="text-base md:text-lg text-text-muted leading-relaxed">
                 {postDetails.hardWorkVsStrategy.text}
               </p>
               
               <div className="grid sm:grid-cols-2 gap-4 mt-8">
                 <div className="p-6 bg-red-500/10 border border-red-500/20 rounded-2xl">
                    <p className="text-xs font-bold uppercase text-red-400 mb-2 tracking-widest">The Myth</p>
-                   <p className="text-lg md:text-xl text-white font-semibold">"{postDetails.hardWorkVsStrategy.myth}"</p>
+                   <p className="text-base md:text-lg text-white font-semibold">"{postDetails.hardWorkVsStrategy.myth}"</p>
                 </div>
                 <div className="p-6 bg-brand-green/10 border border-brand-green/20 rounded-2xl">
                    <p className="text-xs font-bold uppercase text-brand-green mb-2 tracking-widest">The Truth</p>
-                   <p className="text-lg md:text-xl text-white font-semibold">"{postDetails.hardWorkVsStrategy.truth}"</p>
+                   <p className="text-base md:text-lg text-white font-semibold">"{postDetails.hardWorkVsStrategy.truth}"</p>
                 </div>
               </div>
             </section>
 
             {/* 4. The Real Reason You’re Stuck */}
             <section className="space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+              <h2 className="text-xl md:text-3xl font-bold text-white tracking-tight">
                 {postDetails.realReason.heading}
               </h2>
               <div className="space-y-4">
@@ -99,7 +99,7 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ postId, onBack, onCtaCli
                     <span className="text-brand-green mt-1">
                       <CheckCircle2 size={24} />
                     </span>
-                    <p className="text-lg text-text-muted leading-relaxed">
+                    <p className="text-base text-text-muted leading-relaxed">
                       {point}
                     </p>
                   </div>
@@ -109,10 +109,10 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ postId, onBack, onCtaCli
 
             {/* 5. Introducing Webolution */}
             <section className="space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-brand-green tracking-tight">
+              <h2 className="text-xl md:text-3xl font-bold text-brand-green tracking-tight">
                 {postDetails.webolutionIntro.heading}
               </h2>
-              <p className="text-lg md:text-xl text-text-muted leading-relaxed">
+              <p className="text-base md:text-lg text-text-muted leading-relaxed">
                 {postDetails.webolutionIntro.text}
               </p>
             </section>
@@ -128,11 +128,11 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ postId, onBack, onCtaCli
               <div className="grid gap-6">
                 {postDetails.framework.map((phase: any, i: number) => (
                   <div key={i} className="group p-6 md:p-8 bg-navy-800 border border-white/5 rounded-2xl hover:border-brand-green/30 transition-all shadow-xl shadow-black/20">
-                    <h3 className="text-xl md:text-2xl font-black text-white mb-3 uppercase flex items-center gap-3">
+                    <h3 className="text-lg md:text-xl font-black text-white mb-3 uppercase flex items-center gap-3">
                       <span className="w-8 h-8 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center text-sm">{i + 1}</span>
                       {phase.phase}
                     </h3>
-                    <p className="text-lg text-text-muted leading-relaxed">
+                    <p className="text-base text-text-muted leading-relaxed">
                       {phase.text}
                     </p>
                   </div>
@@ -143,10 +143,10 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ postId, onBack, onCtaCli
             {/* 7. Closing & CTA */}
             <footer className="text-center space-y-10 pt-10 border-t border-white/5">
               <div className="space-y-4">
-                <p className="text-xl md:text-3xl text-white font-bold leading-tight">
+                <p className="text-lg md:text-2xl text-white font-bold leading-tight">
                   {postDetails.closing.text}
                 </p>
-                <p className="text-3xl md:text-5xl font-black text-brand-green uppercase tracking-tighter">
+                <p className="text-2xl md:text-4xl font-black text-brand-green uppercase tracking-tighter">
                   {postDetails.closing.cta}
                 </p>
               </div>

@@ -3,7 +3,7 @@ import React from 'react';
 import { CONTENT } from '../constants';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
-import { BookOpen, Info } from 'lucide-react';
+import { BookOpen, Info, ArrowRight } from 'lucide-react';
 import { Button } from './Button';
 
 interface EBookListProps {
@@ -15,21 +15,21 @@ export const EBookList: React.FC<EBookListProps> = ({ onViewDetails }) => {
   const { ebook } = CONTENT;
 
   return (
-    <div className="pt-24 md:pt-32 min-h-screen bg-[#F8F9FA]">
+    <div className="pt-24 md:pt-32 min-h-screen bg-[#FDFDFD]">
       {/* Library Header */}
-      <header className="py-16 md:py-24 px-6 border-b border-gray-200 bg-white">
-        <div className="max-w-5xl mx-auto text-center space-y-4">
+      <header className="py-20 md:py-32 px-6 border-b border-gray-100 bg-white">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex justify-center text-navy-900 mb-2"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex justify-center text-navy-900 mb-2 opacity-20"
           >
-            <BookOpen size={32} strokeWidth={1.5} />
+            <BookOpen size={48} strokeWidth={1} />
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-navy-900 tracking-tight"
+            className="text-4xl md:text-6xl font-black text-navy-900 tracking-tight uppercase"
           >
             {ebook.library.heading}
           </motion.h1>
@@ -37,80 +37,84 @@ export const EBookList: React.FC<EBookListProps> = ({ onViewDetails }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg md:text-xl text-gray-500 font-medium"
+            className="text-lg md:text-2xl text-gray-400 font-medium tracking-tight"
           >
             {ebook.library.subHeading}
           </motion.p>
         </div>
       </header>
 
-      {/* Library Bookshelf Grid */}
+      {/* eBook Card Section */}
       <Section className="py-20 md:py-32" animateOnInView={true}>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-12 gap-y-20">
-          {ebook.list.map((book, idx) => (
-            <motion.div
-              key={book.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group cursor-pointer flex flex-col items-center"
-              onClick={() => onViewDetails(book.id)}
-            >
-              {/* Vertical Book Style Cover Container */}
-              <div className="relative w-full max-w-[260px] aspect-[2/3] mb-8 perspective-1000 group">
-                {/* Book Cover with Spine Shadow */}
-                <div className="absolute inset-0 bg-white rounded-r-lg shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden transition-all duration-500 group-hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] group-hover:-translate-y-2 border border-gray-100">
-                   <img 
+        <div className="max-w-6xl mx-auto flex justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-24">
+            {ebook.list.map((book, idx) => (
+              <motion.div
+                key={book.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group flex flex-col items-center"
+              >
+                {/* Vertical Book Cover */}
+                <div 
+                  className="relative w-full max-w-[280px] aspect-[2/3] mb-10 cursor-pointer"
+                  onClick={() => onViewDetails(book.id)}
+                >
+                  <div className="absolute inset-0 bg-navy-900 rounded-r-xl shadow-2xl group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] transition-all duration-500 transform group-hover:-translate-y-3 overflow-hidden border border-gray-100">
+                    <img 
                       src={book.cover} 
                       alt={book.title} 
-                      className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-opacity"
-                   />
-                   {/* Gradient overlay for physical book dimension */}
-                   <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-transparent pointer-events-none" />
-                   <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-black/5" />
-                </div>
-                
-                {/* Hover Description overlay - subtle and informative */}
-                <div className="absolute inset-0 bg-navy-900/95 backdrop-blur-md p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center rounded-r-lg text-center">
-                   <Info className="text-brand-green mx-auto mb-4" size={24} />
-                   <p className="text-sm md:text-base text-white/90 leading-relaxed font-medium">
-                     {book.summary}
-                   </p>
-                </div>
-              </div>
-
-              {/* Book Info Section */}
-              <div className="text-center space-y-3 max-w-[260px]">
-                <div className="space-y-1">
-                  <h3 className="text-2xl font-black text-navy-900 leading-tight">
-                    {book.title}
-                  </h3>
-                  <p className="text-sm text-gray-400 font-bold uppercase tracking-wider">
-                    {book.subTitle}
-                  </p>
-                </div>
-                
-                <div className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 opacity-60">
-                   <span>{book.meta}</span>
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                    />
+                    {/* Spine Shadow */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent pointer-events-none" />
+                    
+                    {/* Hover Description Overlay */}
+                    <div className="absolute inset-0 bg-white/95 backdrop-blur-sm p-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center">
+                      <p className="text-navy-900 text-base md:text-lg leading-relaxed font-bold italic mb-6">
+                        {book.summary}
+                      </p>
+                      <ArrowRight className="text-brand-green" size={24} />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="pt-6">
-                  <Button 
-                    variant="outline" 
-                    className="text-sm py-2 px-8 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white rounded-lg transition-all"
-                  >
-                    Open Book
-                  </Button>
+                {/* Book Details */}
+                <div className="text-center space-y-4 max-w-[300px]">
+                  <div className="space-y-1">
+                    <h3 className="text-3xl font-black text-navy-900 leading-tight uppercase">
+                      {book.title}
+                    </h3>
+                    <p className="text-sm text-gray-400 font-bold uppercase tracking-widest px-2">
+                      {book.subTitle}
+                    </p>
+                  </div>
+                  
+                  <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-300">
+                    {book.meta}
+                  </div>
+
+                  <div className="pt-6">
+                    <button 
+                      onClick={() => onViewDetails(book.id)}
+                      className="inline-flex items-center gap-2 px-10 py-3 bg-navy-900 text-white rounded-lg text-sm font-black uppercase tracking-widest hover:bg-brand-green transition-all"
+                    >
+                      Open Book
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </Section>
-      
-      {/* Decorative Shelf Line */}
-      <div className="h-px w-full bg-gray-200" />
+
+      {/* Decorative Footer Area */}
+      <div className="py-20 bg-white border-t border-gray-100 text-center">
+        <p className="text-gray-300 text-xs font-black uppercase tracking-[0.4em]">Webolution Professional Reading Platform</p>
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import { CONTENT } from '../constants';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, Tag } from 'lucide-react';
+import { ArrowRight, Calendar, Tag, Star } from 'lucide-react';
 import { Button } from './Button';
 
 interface BlogListProps {
@@ -77,6 +77,11 @@ export const BlogList: React.FC<BlogListProps> = ({ onReadMore, onCtaClick }) =>
                     <span className="flex items-center gap-1.5 text-brand-green">
                       <Tag size={14} /> {post.category}
                     </span>
+                    {post.badge && (
+                      <span className="flex items-center gap-1.5 px-2 py-0.5 bg-brand-green/20 text-brand-green rounded-md border border-brand-green/20">
+                        <Star size={12} fill="currentColor" /> {post.badge}
+                      </span>
+                    )}
                     <span className="flex items-center gap-1.5 text-white/40">
                       <Calendar size={14} /> {post.date}
                     </span>
