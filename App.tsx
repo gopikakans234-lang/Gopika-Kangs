@@ -11,16 +11,14 @@ import { PodcastList } from './components/PodcastList';
 import { PodcastDetail } from './components/PodcastDetail';
 import { EBookList } from './components/EBookList';
 import { EBookDetail } from './components/EBookDetail';
-import { TestSession } from './components/TestSession';
 import { Footer } from './components/Footer';
 import { LeadModal } from './components/LeadModal';
-import { LoginModal } from './components/LoginModal';
-import { Section } from './components/Section';
-import { motion } from 'framer-motion';
-import { CheckCircle, ArrowRight, ShieldCheck } from 'lucide-react';
-import { Button } from './components/Button';
+import { TestSession } from './components/TestSession';
+import { QuizHub } from './components/QuizHub';
+import { AudioQuiz } from './components/AudioQuiz';
+import { ImageQuiz } from './components/ImageQuiz';
 
-type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail' | 'ebook' | 'ebook-detail' | 'test' | 'results';
+type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail' | 'ebook' | 'ebook-detail' | 'quiz-hub' | 'career-quiz' | 'audio-quiz' | 'image-quiz' | 'voice-quiz';
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>('home');
@@ -28,8 +26,6 @@ const App: React.FC = () => {
   const [selectedPodcastId, setSelectedPodcastId] = useState<string | null>(null);
   const [selectedEBookId, setSelectedEBookId] = useState<string | null>(null);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [sessionResults, setSessionResults] = useState<any>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,16 +33,23 @@ const App: React.FC = () => {
 
   const openLeadModal = () => setIsLeadModalOpen(true);
   const closeLeadModal = () => setIsLeadModalOpen(false);
-  
-  const openLoginModal = () => setIsLoginModalOpen(true);
-  const closeLoginModal = () => setIsLoginModalOpen(false);
 
   const navigateToHome = () => setView('home');
   const navigateToBlog = () => setView('blog');
   const navigateToPodcast = () => setView('podcast');
   const navigateToEBook = () => setView('ebook');
-  const navigateToTest = () => setView('test');
+  const navigateToQuizHub = () => setView('quiz-hub');
   
+  const handleQuizSelect = (id: string) => {
+    switch(id) {
+      case 'career': setView('career-quiz'); break;
+      case 'audio': setView('audio-quiz'); break;
+      case 'image': setView('image-quiz'); break;
+      case 'voice': setView('voice-quiz'); break;
+      default: setView('career-quiz');
+    }
+  };
+
   const navigateToPost = (postId: string) => {
     setSelectedPostId(postId);
     setView('blog-post');
@@ -62,43 +65,87 @@ const App: React.FC = () => {
     setView('ebook-detail');
   };
 
-  const handleAuditComplete = (data: any) => {
-    setSessionResults(data);
-    setView('results');
+  const handleAssessmentComplete = (data: any) => {
+    console.log('Assessment Complete:', data);
+    setView('home');
+    openLeadModal();
   };
 
+  const isQuizMode = view === 'quiz-hub' || view === 'career-quiz' || view === 'audio-quiz' || view === 'image-quiz' || view === 'voice-quiz';
+  const isReaderMode = view === 'ebook-detail';
+
   return (
-    <div className="min-h-screen bg-navy-900 text-text-main font-sans selection:bg-brand-green selection:text-navy-900 antialiased overflow-x-hidden">
+    <div className={`min-h-screen ${isReaderMode ? 'bg-[#FDFDFD]' : 'bg-navy-900'} text-text-main font-sans selection:bg-brand-green selection:text-navy-900 antialiased overflow-x-hidden`}>
       {/* Navigation */}
-      <nav className="fixed top-0 w-full px-4 md:px-8 py-4 z-50 flex justify-between items-center bg-navy-900/90 backdrop-blur-lg border-b border-white/5">
-        <div 
-          className="text-lg sm:text-xl md:text-2xl font-black tracking-tighter cursor-pointer flex items-center gap-1"
-          onClick={navigateToHome}
-        >
-          <span className="text-brand-green">Web</span><span className="text-white">ution</span>
-        </div>
-        
-        <div className="flex gap-4 sm:gap-8 items-center">
-          <div className="flex gap-3 sm:gap-6 items-center">
-            <button onClick={navigateToHome} className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>Home</button>
-            <button onClick={navigateToBlog} className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view.startsWith('blog') ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>Blog</button>
-            <button onClick={navigateToPodcast} className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view.startsWith('podcast') ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>Podcast</button>
-            <button onClick={navigateToEBook} className={`text-[10px] sm:text-sm md:text-base font-bold tracking-tight transition-colors ${view.startsWith('ebook') ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>eBook</button>
-            <button onClick={openLoginModal} className="hidden md:block text-sm font-bold text-white/60 hover:text-white transition-colors">Log In</button>
-            <button onClick={navigateToTest} className={`px-3 py-1 bg-brand-green/10 border border-brand-green/30 text-brand-green text-[10px] sm:text-xs font-black uppercase rounded-full transition-all hover:bg-brand-green hover:text-navy-900`}>Start quiz</button>
+      {!isReaderMode && (
+        <nav className="fixed top-0 w-full px-4 md:px-8 py-4 z-50 flex justify-between items-center bg-navy-900/90 backdrop-blur-lg border-b border-white/5">
+          <div 
+            className="text-lg sm:text-xl md:text-2xl font-black tracking-tighter cursor-pointer flex items-center gap-1"
+            onClick={navigateToHome}
+          >
+            <span className="text-brand-green">Web</span><span className="text-white">ution</span>
           </div>
-        </div>
-      </nav>
+          
+          <div className="flex gap-4 sm:gap-8 items-center">
+            <div className="hidden sm:flex gap-6 items-center">
+              <button onClick={navigateToHome} className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view === 'home' ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>Home</button>
+              <button onClick={navigateToBlog} className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view.startsWith('blog') ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>Blog</button>
+              <button onClick={navigateToPodcast} className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view.startsWith('podcast') ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>Podcast</button>
+              <button onClick={navigateToEBook} className={`text-sm md:text-base font-bold tracking-tight transition-colors ${view.startsWith('ebook') ? 'text-brand-green' : 'text-white/80 hover:text-white'}`}>eBooks</button>
+            </div>
+            <button 
+              onClick={navigateToQuizHub}
+              className={`px-4 py-2 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest transition-all ${isQuizMode ? 'bg-white text-navy-900' : 'bg-brand-green text-navy-900 hover:bg-brand-hover shadow-lg shadow-brand-green/20'}`}
+            >
+              {isQuizMode ? 'EXIT QUIZ' : 'START QUIZ'}
+            </button>
+          </div>
+        </nav>
+      )}
 
       <main className="relative w-full">
         {view === 'home' && (
           <>
-            <Hero onCtaClick={openLeadModal} onSecondaryCtaClick={navigateToTest} />
+            <Hero 
+              onCtaClick={openLeadModal} 
+              onQuizClick={navigateToQuizHub} 
+            />
             <RealityCheck />
             <MythTruth />
-            <Solution onCtaClick={openLeadModal} />
+            <Solution 
+              onCtaClick={openLeadModal} 
+              onQuizClick={navigateToQuizHub} 
+            />
             <FAQ />
           </>
+        )}
+
+        {view === 'quiz-hub' && (
+          <QuizHub 
+            onSelect={handleQuizSelect}
+            onCancel={navigateToHome}
+          />
+        )}
+
+        {view === 'career-quiz' && (
+          <TestSession 
+            onComplete={handleAssessmentComplete} 
+            onCancel={navigateToQuizHub} 
+          />
+        )}
+
+        {view === 'audio-quiz' && (
+          <AudioQuiz 
+            onCancel={navigateToQuizHub}
+            onComplete={(score) => handleAssessmentComplete({ mode: 'audio', score })}
+          />
+        )}
+
+        {view === 'image-quiz' && (
+          <ImageQuiz 
+            onCancel={navigateToQuizHub}
+            onComplete={(score) => handleAssessmentComplete({ mode: 'image', score })}
+          />
         )}
 
         {view === 'blog' && <BlogList onReadMore={navigateToPost} onCtaClick={openLeadModal} />}
@@ -107,63 +154,11 @@ const App: React.FC = () => {
         {view === 'podcast-detail' && selectedPodcastId && <PodcastDetail podcastId={selectedPodcastId} onBack={navigateToPodcast} onCtaClick={openLeadModal} />}
         {view === 'ebook' && <EBookList onViewDetails={navigateToEBookDetail} onCtaClick={openLeadModal} />}
         {view === 'ebook-detail' && selectedEBookId && <EBookDetail ebookId={selectedEBookId} onBack={navigateToEBook} onCtaClick={openLeadModal} />}
-        
-        {view === 'test' && <TestSession onComplete={handleAuditComplete} onCancel={navigateToHome} />}
-        
-        {view === 'results' && (
-          <Section className="min-h-screen flex items-center justify-center pt-32 pb-20">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="max-w-3xl w-full bg-navy-800 border border-white/10 rounded-[40px] p-10 md:p-16 text-center shadow-2xl relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green/5 blur-[80px] rounded-full pointer-events-none" />
-              
-              <div className="w-20 h-20 bg-brand-green/20 text-brand-green rounded-full flex items-center justify-center mx-auto mb-8">
-                <ShieldCheck size={48} />
-              </div>
-
-              <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Strategy Processing...</h1>
-              <p className="text-xl text-text-muted mb-12 max-w-xl mx-auto leading-relaxed">
-                Thank you, <strong>{sessionResults?.userInfo?.firstName}</strong>. Your career parameters have been captured. Our AI is currently generating your personalized <strong>Strategic Growth Roadmap</strong>.
-              </p>
-
-              <div className="bg-navy-900/50 rounded-2xl p-8 mb-12 text-left space-y-4 border border-white/5">
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="text-brand-green" size={20} />
-                  <span className="text-white font-medium">Core mindset profile generated</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="text-brand-green" size={20} />
-                  <span className="text-white font-medium">Mid-career stagnation triggers identified</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="text-brand-green" size={20} />
-                  <span className="text-white font-medium">Leadership transition markers analyzed</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Button onClick={() => window.location.reload()} className="px-10">
-                  Return to Dashboard
-                </Button>
-                <Button variant="secondary" onClick={navigateToHome} className="px-10">
-                  Contact Strategy Team
-                </Button>
-              </div>
-              
-              <p className="mt-12 text-white/20 text-xs">
-                Your report will be sent to <strong>{sessionResults?.userInfo?.email}</strong> within 15 minutes.
-              </p>
-            </motion.div>
-          </Section>
-        )}
       </main>
 
-      {view !== 'test' && view !== 'results' && <Footer onCtaClick={openLeadModal} />}
+      {!isQuizMode && !isReaderMode && <Footer onCtaClick={openLeadModal} />}
       
       <LeadModal isOpen={isLeadModalOpen} onClose={closeLeadModal} />
-      <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
     </div>
   );
 };

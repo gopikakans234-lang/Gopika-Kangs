@@ -3,8 +3,7 @@ import React from 'react';
 import { CONTENT } from '../constants';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
-import { BookOpen, Info, ArrowRight } from 'lucide-react';
-import { Button } from './Button';
+import { BookOpen, ArrowRight } from 'lucide-react';
 
 interface EBookListProps {
   onViewDetails: (id: string) => void;
@@ -22,14 +21,14 @@ export const EBookList: React.FC<EBookListProps> = ({ onViewDetails }) => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="flex justify-center text-navy-900 mb-2 opacity-20"
+            className="flex justify-center text-navy-900 mb-2 opacity-10"
           >
-            <BookOpen size={48} strokeWidth={1} />
+            <BookOpen size={64} strokeWidth={1} />
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-black text-navy-900 tracking-tight uppercase"
+            className="text-4xl md:text-7xl font-black text-navy-900 tracking-tighter uppercase"
           >
             {ebook.library.heading}
           </motion.h1>
@@ -37,16 +36,16 @@ export const EBookList: React.FC<EBookListProps> = ({ onViewDetails }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg md:text-2xl text-gray-400 font-medium tracking-tight"
+            className="text-lg md:text-2xl text-gray-400 font-medium tracking-tight max-w-2xl mx-auto"
           >
             {ebook.library.subHeading}
           </motion.p>
         </div>
       </header>
 
-      {/* eBook Card Section */}
+      {/* eBook Grid Section */}
       <Section className="py-20 md:py-32" animateOnInView={true}>
-        <div className="max-w-6xl mx-auto flex justify-center">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-24">
             {ebook.list.map((book, idx) => (
               <motion.div
@@ -59,47 +58,47 @@ export const EBookList: React.FC<EBookListProps> = ({ onViewDetails }) => {
               >
                 {/* Vertical Book Cover */}
                 <div 
-                  className="relative w-full max-w-[280px] aspect-[2/3] mb-10 cursor-pointer"
+                  className="relative w-full max-w-[300px] aspect-[3/4] mb-10 cursor-pointer"
                   onClick={() => onViewDetails(book.id)}
                 >
-                  <div className="absolute inset-0 bg-navy-900 rounded-r-xl shadow-2xl group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] transition-all duration-500 transform group-hover:-translate-y-3 overflow-hidden border border-gray-100">
+                  <div className="absolute inset-0 bg-navy-900 rounded-r-2xl shadow-2xl group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.2)] transition-all duration-500 transform group-hover:-translate-y-4 overflow-hidden border border-gray-200">
                     <img 
                       src={book.cover} 
                       alt={book.title} 
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
                     />
                     {/* Spine Shadow */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent pointer-events-none" />
                     
                     {/* Hover Description Overlay */}
-                    <div className="absolute inset-0 bg-white/95 backdrop-blur-sm p-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center">
-                      <p className="text-navy-900 text-base md:text-lg leading-relaxed font-bold italic mb-6">
+                    <div className="absolute inset-0 bg-navy-900/95 backdrop-blur-sm p-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center">
+                      <p className="text-white text-base md:text-lg leading-relaxed font-bold italic mb-6">
                         {book.summary}
                       </p>
-                      <ArrowRight className="text-brand-green" size={24} />
+                      <ArrowRight className="text-brand-green" size={28} />
                     </div>
                   </div>
                 </div>
 
                 {/* Book Details */}
-                <div className="text-center space-y-4 max-w-[300px]">
+                <div className="text-center space-y-4 max-w-[320px]">
                   <div className="space-y-1">
-                    <h3 className="text-3xl font-black text-navy-900 leading-tight uppercase">
+                    <h3 className="text-3xl font-black text-navy-900 leading-tight uppercase tracking-tight">
                       {book.title}
                     </h3>
-                    <p className="text-sm text-gray-400 font-bold uppercase tracking-widest px-2">
+                    <p className="text-xs text-gray-400 font-bold uppercase tracking-widest px-2">
                       {book.subTitle}
                     </p>
                   </div>
                   
-                  <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-300">
+                  <div className="inline-block px-4 py-1.5 rounded-full bg-gray-50 border border-gray-100 text-[10px] font-black uppercase tracking-[0.2em] text-gray-300">
                     {book.meta}
                   </div>
 
                   <div className="pt-6">
                     <button 
                       onClick={() => onViewDetails(book.id)}
-                      className="inline-flex items-center gap-2 px-10 py-3 bg-navy-900 text-white rounded-lg text-sm font-black uppercase tracking-widest hover:bg-brand-green transition-all"
+                      className="inline-flex items-center gap-2 px-10 py-3 bg-navy-900 text-white rounded-lg text-xs font-black uppercase tracking-[0.2em] hover:bg-brand-green hover:text-navy-900 transition-all shadow-lg"
                     >
                       Open Book
                     </button>
@@ -113,7 +112,7 @@ export const EBookList: React.FC<EBookListProps> = ({ onViewDetails }) => {
 
       {/* Decorative Footer Area */}
       <div className="py-20 bg-white border-t border-gray-100 text-center">
-        <p className="text-gray-300 text-xs font-black uppercase tracking-[0.4em]">Webolution Professional Reading Platform</p>
+        <p className="text-gray-200 text-[10px] font-black uppercase tracking-[0.5em]">Webolution Professional Reading Platform</p>
       </div>
     </div>
   );

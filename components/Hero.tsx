@@ -7,10 +7,10 @@ import { Button } from './Button';
 
 interface HeroProps {
   onCtaClick: () => void;
-  onSecondaryCtaClick?: () => void;
+  onQuizClick?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onCtaClick, onSecondaryCtaClick }) => {
+export const Hero: React.FC<HeroProps> = ({ onCtaClick, onQuizClick }) => {
   const { hero } = CONTENT;
 
   return (
@@ -48,10 +48,11 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick, onSecondaryCtaClick }) =
 
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10 w-full sm:w-auto px-6" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
           <Button onClick={onCtaClick} className="w-full sm:w-auto shadow-2xl">{hero.primaryCta}</Button>
-          <button onClick={onSecondaryCtaClick} className="group flex items-center justify-center gap-3 text-sm md:text-base font-bold tracking-[0.15em] text-white uppercase hover:text-brand-green transition-colors py-3">
-            {hero.secondaryCta}
-            <span className="hidden sm:inline-block w-8 md:w-12 h-[2px] bg-white/20 group-hover:bg-brand-green transition-colors duration-300"></span>
-          </button>
+          {(hero as any).secondaryCta && (
+            <Button onClick={onQuizClick} variant="secondary" className="w-full sm:w-auto">
+              {(hero as any).secondaryCta}
+            </Button>
+          )}
         </motion.div>
       </div>
     </Section>

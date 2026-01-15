@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { CONTENT } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ChevronLeft, ChevronRight, Menu, X, BookOpen, Download, Bookmark, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, Menu, X, Bookmark, Download } from 'lucide-react';
 import { Button } from './Button';
 
 interface EBookDetailProps {
@@ -158,7 +158,7 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
           >
             {/* Chapter Header */}
             <header className="mb-20 md:mb-32 text-center">
-              <span className="inline-block px-4 py-2 bg-gray-50 rounded-full text-[11px] font-black uppercase tracking-[0.3em] text-gray-400 mb-8">
+              <span className="inline-block px-4 py-2 bg-gray-50 rounded-full text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 mb-8">
                 Chapter 0{currentChapterIndex + 1}
               </span>
               <h1 className="text-4xl md:text-7xl font-black text-navy-900 tracking-tighter leading-none uppercase">
@@ -169,12 +169,12 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
             {/* Reading Content */}
             <div className="prose prose-lg md:prose-2xl max-w-none text-navy-900/90 font-serif leading-relaxed space-y-12">
               
-              {/* Orientation / Intro */}
+              {/* Introduction Content */}
               {currentChapter.id === 'intro' && (
-                <div className="space-y-12 text-center md:text-left">
-                   <h2 className="text-2xl md:text-4xl font-black text-brand-green uppercase tracking-tight font-sans">
+                <div className="space-y-12">
+                   <p className="text-2xl md:text-3xl font-black text-brand-green uppercase tracking-tight font-sans text-center">
                      {(currentChapter.content as any).heading}
-                   </h2>
+                   </p>
                    <div className="text-2xl md:text-4xl leading-snug font-medium italic border-l-4 border-gray-100 pl-8 md:pl-12 py-4">
                      {(currentChapter.content as any).text.split('\n').map((line: string, i: number) => (
                        <p key={i} className="mb-4">{line}</p>
@@ -183,14 +183,14 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
                 </div>
               )}
 
-              {/* Problem / Stagnation */}
+              {/* Problem Content */}
               {currentChapter.id === 'problem' && (
                 <div className="space-y-12">
                    <div className="space-y-4 text-center md:text-left">
                       <h2 className="text-3xl md:text-5xl font-black text-navy-900 tracking-tight uppercase font-sans">
                         {(currentChapter.content as any).heading}
                       </h2>
-                      <p className="text-2xl md:text-3xl text-gray-400 font-medium italic">
+                      <p className="text-xl md:text-2xl text-gray-400 font-medium italic">
                         {(currentChapter.content as any).subHeading}
                       </p>
                    </div>
@@ -199,7 +199,7 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
                      {(currentChapter.content as any).points.map((point: string, i: number) => (
                        <div key={i} className="flex items-start gap-5 p-8 bg-gray-50 rounded-3xl border border-gray-100 hover:border-brand-green/30 transition-all group">
                          <div className="mt-1.5 flex-shrink-0 w-6 h-6 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center">
-                           <CheckCircle2 size={16} />
+                           <X size={14} strokeWidth={4} />
                          </div>
                          <span className="text-xl md:text-2xl font-bold text-navy-900 leading-tight">{point}</span>
                        </div>
@@ -208,7 +208,7 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
                 </div>
               )}
 
-              {/* Advice / Myth vs Truth */}
+              {/* Advice Content */}
               {currentChapter.id === 'advice' && (
                 <div className="space-y-20">
                    <div className="bg-gray-50 p-12 md:p-20 rounded-[60px] text-center italic font-serif text-3xl md:text-5xl leading-tight border border-gray-100 shadow-sm">
@@ -230,14 +230,11 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
                 </div>
               )}
 
-              {/* Blueprint Phases */}
-              {currentChapter.id.startsWith('phase') && (
+              {/* Generic Phase/Blueprint Content */}
+              {(currentChapter.id.startsWith('phase') || currentChapter.id === 'blueprint') && (
                 <div className="space-y-16 py-10">
-                   <div className="inline-flex items-center gap-3 text-brand-green font-black uppercase tracking-[0.4em] text-[10px] font-sans">
-                     <BookOpen size={18} strokeWidth={3} /> Career Protocol
-                   </div>
                    <div className="space-y-8">
-                     <h2 className="text-4xl md:text-6xl font-black leading-none uppercase font-sans tracking-tight">
+                     <h2 className="text-4xl md:text-7xl font-black leading-none uppercase font-sans tracking-tighter">
                        {(currentChapter.content as any).heading}
                      </h2>
                      <p className="text-2xl md:text-4xl text-gray-400 font-medium leading-relaxed italic">
@@ -246,13 +243,10 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
                    </div>
                    
                    <div className="p-10 md:p-16 bg-navy-900 rounded-[50px] text-white space-y-10 font-sans shadow-2xl">
-                      <div className="text-brand-green text-[10px] font-black uppercase tracking-[0.5em]">Tactical Summary</div>
+                      <div className="text-brand-green text-[10px] font-black uppercase tracking-[0.5em]">Protocol Implementation</div>
                       <p className="text-xl md:text-2xl font-bold opacity-90 leading-relaxed">
-                        In this phase, we apply technical precision to professional trajectory. No more guessing. No more plateaus. 
+                        This phase focuses on technical and professional recalibration. Most developers wait for permission; we build authority through intentional design.
                       </p>
-                      <div className="flex items-center gap-4 text-brand-green font-black text-xs uppercase tracking-widest">
-                        Proceed to next step <ArrowRight size={16} />
-                      </div>
                    </div>
                 </div>
               )}
@@ -262,15 +256,15 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
             <div className="mt-40 pt-20 border-t border-gray-100 flex flex-col items-center gap-16">
                {currentChapterIndex === totalChapters - 1 ? (
                  <div className="text-center space-y-12 w-full">
-                    <h3 className="text-3xl md:text-5xl font-black text-navy-900 uppercase tracking-tight">{details.footer.cta}</h3>
+                    <h3 className="text-3xl md:text-6xl font-black text-navy-900 uppercase tracking-tighter leading-none">{details.footer.cta}</h3>
                     <div className="flex flex-col sm:flex-row justify-center gap-6">
-                       <Button onClick={onCtaClick} className="px-14 py-5 shadow-2xl">Start Your Webolution</Button>
+                       <Button onClick={onCtaClick} className="px-16 py-6 shadow-2xl text-xl">Join the Webolution</Button>
                        <Button variant="secondary" className="bg-gray-100 text-navy-900 border-transparent hover:bg-gray-200 px-10">
                          <Download size={20} className="mr-2" /> Download PDF
                        </Button>
                     </div>
                     <div className="flex justify-center gap-10 pt-4">
-                       <button className="flex items-center gap-2.5 text-gray-300 hover:text-navy-900 font-black uppercase text-[10px] tracking-[0.3em] transition-colors group">
+                       <button className="flex items-center gap-2.5 text-gray-300 hover:text-navy-900 font-black uppercase text-[10px] tracking-[0.4em] transition-colors group">
                          <Bookmark size={16} className="group-hover:text-brand-green" /> Bookmark Progress
                        </button>
                     </div>
@@ -282,7 +276,7 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
                  >
                    <span className="text-[11px] font-black uppercase tracking-[0.4em] text-gray-300 group-hover:text-brand-green transition-colors">Next Chapter</span>
                    <span className="text-4xl md:text-7xl font-black text-navy-900 group-hover:text-brand-green transition-all tracking-tighter uppercase flex items-center gap-6">
-                     {details.chapters[currentChapterIndex + 1].title} <ChevronRight size={50} className="group-hover:translate-x-3 transition-transform" />
+                     {details.chapters[currentChapterIndex + 1].title} <ChevronRight size={60} className="group-hover:translate-x-4 transition-transform" />
                    </span>
                  </button>
                )}
@@ -290,27 +284,6 @@ export const EBookDetail: React.FC<EBookDetailProps> = ({ ebookId, onBack, onCta
           </motion.article>
         </main>
       </div>
-      
-      {/* Viewer Decorative Elements */}
-      <div className="fixed bottom-10 right-10 pointer-events-none opacity-5 z-[0]">
-        <BookOpen size={200} strokeWidth={1} className="text-navy-900" />
-      </div>
     </div>
   );
 };
-
-const ArrowRight = ({ className, size }: { className?: string; size?: number }) => (
-  <svg 
-    className={className} 
-    width={size || 24} 
-    height={size || 24} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2.5" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-  >
-    <path d="M5 12h14m-7-7 7 7-7 7" />
-  </svg>
-);

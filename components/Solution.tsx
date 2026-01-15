@@ -8,9 +8,10 @@ import { motion } from 'framer-motion';
 
 interface SolutionProps {
   onCtaClick: () => void;
+  onQuizClick?: () => void;
 }
 
-export const Solution: React.FC<SolutionProps> = ({ onCtaClick }) => {
+export const Solution: React.FC<SolutionProps> = ({ onCtaClick, onQuizClick }) => {
   const { solution } = CONTENT;
 
   const container = {
@@ -112,9 +113,14 @@ export const Solution: React.FC<SolutionProps> = ({ onCtaClick }) => {
           ))}
         </motion.div>
 
-        <Button onClick={onCtaClick} variant="primary" className="w-full sm:w-auto">
-          {solution.cta} <ArrowRight className="ml-2 w-5 h-5 inline" />
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-6">
+          <Button onClick={onCtaClick} variant="primary" className="w-full sm:w-auto">
+            {solution.cta} <ArrowRight className="ml-2 w-5 h-5 inline" />
+          </Button>
+          <Button onClick={onQuizClick} variant="secondary" className="w-full sm:w-auto">
+            Take Career Audit
+          </Button>
+        </div>
       </div>
     </Section>
   );

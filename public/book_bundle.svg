@@ -1,5 +1,5 @@
 <svg width="480" height="360" viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="480" height="360" rx="12" fill="#021a6b"/>
+  <rect width="480" height="360" rx="12" fill="#020617"/>
   <rect x="4" y="4" width="472" height="352" rx="8" stroke="#0CCD7E" stroke-width="2" stroke-dasharray="12 12"/>
   <path d="M240 130V230M190 180H290" stroke="#0CCD7E" stroke-width="4" stroke-linecap="round"/>
   <text x="240" y="270" fill="#0CCD7E" font-family="sans-serif" font-size="16" font-weight="600" text-anchor="middle" letter-spacing="1">REPLACE WITH IMAGE</text>

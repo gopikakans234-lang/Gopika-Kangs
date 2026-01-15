@@ -1,25 +1,21 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CONTENT } from '../constants';
 import { 
-  HelpCircle, 
-  Clock, 
   Shield, 
-  CheckCircle2, 
   ArrowRight, 
   ArrowLeft, 
   User, 
-  X, 
-  Compass, 
   Activity, 
   Phone, 
   Mail, 
-  Edit3
+  Edit3,
+  Check,
+  CheckCircle2
 } from 'lucide-react';
 import { Button } from './Button';
 
-type Step = 'intro' | 'test' | 'summary' | 'details';
+type Step = 'intro' | 'test' | 'summary' | 'details' | 'processing';
 
 interface UserInfo {
   firstName: string;
@@ -70,224 +66,224 @@ export const TestSession: React.FC<TestSessionProps> = ({ onComplete, onCancel }
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onComplete({ userInfo, answers });
+    setStep('processing');
+    setTimeout(() => {
+      onComplete({ userInfo, answers });
+    }, 2500);
   };
 
-  const progress = ((currentQuestionIndex + 1) / assessment.questions.length) * 100;
-
-  // Render Intro
+  // 1. Intro Step
   if (step === 'intro') {
     return (
       <div className="pt-32 pb-20 min-h-screen bg-navy-900 flex flex-col items-center px-6">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-xl w-full text-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="max-w-2xl w-full text-center flex flex-col items-center"
         >
-          <div className="w-20 h-20 bg-brand-green/20 text-brand-green rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl shadow-brand-green/10">
-            <Compass size={40} strokeWidth={1.5} />
+          <div className="w-20 h-20 bg-brand-green/10 text-brand-green rounded-full flex items-center justify-center mb-8">
+            <Activity size={40} />
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
-            Career Presence Audit
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight uppercase leading-none">
+            {assessment.intro.heading}
           </h1>
-          <p className="text-lg text-text-muted font-medium mb-12">
-            Evaluate your career mindset and professional authority
+          <p className="text-xl text-text-muted font-medium mb-12 max-w-lg mx-auto leading-relaxed">
+            {assessment.intro.subHeading}
           </p>
 
-          <div className="bg-navy-800 rounded-[32px] p-8 md:p-12 space-y-6 mb-12 text-left shadow-sm border border-white/5">
-            {assessment.intro.stats.filter(s => s.icon !== 'microphone').map((stat, i) => (
-              <div key={i} className="flex items-center gap-4 group">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center text-brand-green bg-navy-900 shadow-sm border border-white/5">
-                  {stat.icon === 'help' && <HelpCircle size={20} />}
-                  {stat.icon === 'clock' && <Clock size={20} />}
-                  {stat.icon === 'shield' && <Shield size={20} />}
-                  {stat.icon === 'check' && <Activity size={20} />}
+          <div className="flex flex-col gap-4 mb-16 w-full max-w-md">
+            {assessment.intro.list.map((item, i) => (
+              <div key={i} className="flex items-center gap-4 text-left p-2">
+                <div className="text-brand-green">
+                  <CheckCircle2 size={24} />
                 </div>
-                <span className="text-white font-semibold text-lg">{stat.label}</span>
+                <span className="text-white font-bold text-lg">{item}</span>
               </div>
             ))}
           </div>
 
           <Button 
             onClick={handleStart} 
-            className="w-full py-5 text-xl bg-brand-green hover:bg-brand-hover text-navy-900 shadow-xl shadow-brand-green/20"
+            className="w-full sm:w-auto px-16 py-6 text-xl shadow-2xl"
           >
             {assessment.intro.cta} <ArrowRight className="ml-2" />
           </Button>
 
-          <button onClick={onCancel} className="mt-8 text-sm text-white/40 hover:text-white transition-colors uppercase font-black tracking-widest">
-            Back to Home
+          <button onClick={onCancel} className="mt-10 text-sm text-white/30 hover:text-white transition-colors uppercase font-black tracking-widest">
+            {assessment.intro.back}
           </button>
         </motion.div>
       </div>
     );
   }
 
-  // Render Test Questions
+  // 2. Questioning Step
   if (step === 'test') {
     return (
-      <div className="pt-24 min-h-screen bg-navy-900 text-white flex flex-col">
-        <div className="sticky top-16 bg-navy-900 z-40 px-6 py-6 border-b border-white/5">
-          <div className="max-w-4xl mx-auto">
-            <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden mb-3">
-              <motion.div 
-                className="h-full bg-brand-green shadow-[0_0_10px_rgba(12,205,126,0.5)]"
-                initial={{ width: 0 }}
-                animate={{ width: `${progress}%` }}
-                transition={{ type: 'spring', stiffness: 50, damping: 20 }}
-              />
-            </div>
-            <div className="flex justify-between items-center text-[11px] font-black uppercase tracking-widest text-white/30">
-              <span>{Math.round(progress)}% Complete</span>
-              <span>Question {currentQuestionIndex + 1}/{assessment.questions.length}</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex-1 flex flex-col items-center justify-center py-12 px-6">
-          <div className="max-w-3xl w-full">
+      <div className="min-h-screen bg-navy-900 flex items-center justify-center pt-24 pb-12 px-4 sm:px-10">
+        
+        {/* Inner Container: Updated background to match deep navy theme */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="w-full max-w-6xl h-full min-h-[75vh] bg-navy-800/80 rounded-[50px] border border-white/5 flex flex-col relative overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.5)]"
+        >
+          
+          {/* Content Wrapper */}
+          <div className="flex-1 flex flex-col items-center justify-center px-6 md:px-12 max-w-4xl mx-auto w-full relative">
+            
             <AnimatePresence mode="wait">
               <motion.div 
                 key={currentQuestionIndex}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.02 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="bg-navy-800 border border-white/5 rounded-[40px] p-8 md:p-16 text-center shadow-2xl relative"
+                className="text-center w-full pt-8"
               >
-                <div className="mb-12">
-                  <div className="flex flex-col items-center gap-6">
-                    <div className="w-12 h-12 bg-brand-green/10 text-brand-green rounded-full flex items-center justify-center mb-2">
-                       <User size={24} />
-                    </div>
-                    <h2 className="text-2xl md:text-4xl font-black text-white leading-[1.3] max-w-2xl">
-                      {assessment.questions[currentQuestionIndex]}
-                    </h2>
-                  </div>
-                </div>
+                {/* Question Text */}
+                <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-20 md:mb-24 tracking-tight">
+                  {assessment.questions[currentQuestionIndex]}
+                </h2>
 
-                <div className="mt-16 relative">
-                  <div className="flex items-center justify-between max-w-lg mx-auto mb-12 relative">
-                    <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-white/5 z-0" />
+                {/* Slider / Circles Area */}
+                <div className="relative w-full max-w-lg mx-auto pb-16">
+                  {/* Horizontal line */}
+                  <div className="absolute left-0 right-0 top-[16px] h-[1px] bg-white/10 z-0" />
+                  
+                  <div className="flex items-center justify-between relative z-10 px-2 h-[32px]">
                     {[...Array(7)].map((_, i) => {
                       const isActive = answers[currentQuestionIndex] === i;
-                      const baseSize = 32;
-                      const size = baseSize + (Math.abs(i - 3) * 6);
+                      const sizes = [32, 16, 16, 16, 16, 16, 32];
+                      const size = sizes[i];
                       
-                      let bgClass = "bg-white/10";
-                      let activeBg = "";
-                      if (i < 3) activeBg = "bg-brand-green";
-                      if (i === 3) activeBg = "bg-white/40";
-                      if (i > 3) activeBg = "bg-brand-green"; // Inverted logic for Disagree if needed, but solid green for choice is fine
-
                       return (
-                        <button
-                          key={i}
-                          onClick={() => handleSelectAnswer(i)}
-                          className={`
-                            relative z-10 rounded-full transition-all duration-300 group
-                            ${isActive ? 'scale-125 shadow-[0_0_20px_rgba(12,205,126,0.4)]' : 'hover:scale-110'}
-                            ${isActive ? activeBg : bgClass}
-                            border-2 border-transparent
-                            flex items-center justify-center
-                          `}
-                          style={{ width: size, height: size }}
-                        >
-                          {isActive && (
-                            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="text-navy-900">
-                              <CheckCircle2 size={size * 0.5} />
-                            </motion.div>
-                          )}
-                        </button>
+                        <div key={i} className="flex flex-col items-center justify-center h-full">
+                          <button
+                            onClick={() => handleSelectAnswer(i)}
+                            className={`
+                              relative rounded-full transition-all duration-300 transform
+                              flex items-center justify-center
+                            `}
+                            style={{ 
+                              width: size, 
+                              height: size, 
+                              backgroundColor: isActive ? '#0CCD7E' : 'rgba(255, 255, 255, 0.08)' 
+                            }}
+                          >
+                            {isActive && (
+                              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+                                <Check size={size * 0.6} className="text-navy-950" strokeWidth={4} />
+                              </motion.div>
+                            )}
+                          </button>
+                        </div>
                       );
                     })}
                   </div>
 
-                  <div className="flex justify-between max-w-lg mx-auto opacity-50">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-brand-green">Strongly Agree</span>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-white">Strongly Disagree</span>
+                  {/* Labels */}
+                  <div className="flex justify-between mt-8 px-1">
+                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-[#0CCD7E]">
+                      STRONGLY AGREE
+                    </span>
+                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-white/40">
+                      STRONGLY DISAGREE
+                    </span>
                   </div>
-                </div>
-
-                {/* Navigation Buttons */}
-                <div className="mt-16 flex items-center justify-between">
-                  <button 
-                    onClick={goToPrev}
-                    disabled={currentQuestionIndex === 0}
-                    className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-white transition-colors disabled:opacity-0"
-                  >
-                    <ArrowLeft size={18} /> Back
-                  </button>
-                  
-                  <Button 
-                    onClick={goToNext}
-                    disabled={answers[currentQuestionIndex] === -1}
-                    className="px-10 py-3 bg-white text-navy-900 hover:bg-brand-green hover:text-navy-900 border-none rounded-xl"
-                  >
-                    {currentQuestionIndex === assessment.questions.length - 1 ? 'Finish' : 'Next'} <ArrowRight size={18} className="ml-1" />
-                  </Button>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
-        </div>
+
+          {/* Navigation Bar inside the inner box */}
+          <div className="w-full px-12 pb-12 flex items-center justify-between">
+            <button 
+              onClick={goToPrev}
+              disabled={currentQuestionIndex === 0}
+              className="flex items-center gap-2 px-4 py-2 text-xs font-black uppercase tracking-widest text-white/20 hover:text-white transition-colors disabled:opacity-0"
+            >
+              <ArrowLeft size={16} /> Back
+            </button>
+            
+            <button 
+              onClick={goToNext}
+              disabled={answers[currentQuestionIndex] === -1}
+              className="flex items-center gap-2 px-8 py-4 bg-brand-green/80 hover:bg-brand-green text-navy-950 font-bold rounded-2xl transition-all shadow-lg group"
+            >
+               <span className="text-lg font-bold">
+                 {currentQuestionIndex === assessment.questions.length - 1 ? 'Review' : 'Next'}
+               </span>
+               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
+            </button>
+          </div>
+        </motion.div>
       </div>
     );
   }
 
-  // Render Summary
+  // 3. Summary Review Step
   if (step === 'summary') {
     return (
       <div className="pt-32 pb-20 min-h-screen bg-navy-900 flex flex-col items-center px-6">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-3xl w-full"
+          className="max-w-4xl w-full"
         >
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">Review Your Audit</h1>
-            <p className="text-text-muted">Ensure your answers reflect your true current state for the most accurate roadmap.</p>
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight uppercase mb-4">Review Audit</h1>
+            <p className="text-lg text-text-muted font-medium">Verify your responses before the final career analysis.</p>
           </div>
 
-          <div className="bg-navy-800 border border-white/5 rounded-[40px] p-6 md:p-10 space-y-4 max-h-[60vh] overflow-y-auto mb-10 custom-scrollbar">
+          <div className="space-y-4 mb-16 max-h-[60vh] overflow-y-auto pr-4 custom-scrollbar text-left">
             {assessment.questions.map((q, idx) => {
               const answer = answers[idx];
               const labels = ["Strongly Agree", "Agree", "Somewhat Agree", "Neutral", "Somewhat Disagree", "Disagree", "Strongly Disagree"];
               
               return (
-                <div key={idx} className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 rounded-2xl bg-navy-900/50 border border-white/5 hover:border-brand-green/20 transition-all group">
-                  <div className="flex-1">
-                    <p className="text-white font-medium mb-1 leading-snug">{q}</p>
-                    <p className="text-xs text-brand-green font-bold uppercase tracking-widest">{labels[answer]}</p>
+                <div key={idx} className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-[32px] bg-navy-800/40 border border-white/5 hover:border-brand-green/30 transition-all group">
+                  <div className="flex gap-4 items-start flex-1">
+                    <span className="text-[10px] font-black text-brand-green opacity-40 mt-1">{idx + 1}</span>
+                    <p className="text-white/80 font-bold text-lg leading-snug">{q}</p>
                   </div>
-                  <button 
-                    onClick={() => {
-                      setCurrentQuestionIndex(idx);
-                      setStep('test');
-                    }}
-                    className="p-2 text-white/20 hover:text-brand-green transition-colors"
-                    title="Change Answer"
-                  >
-                    <Edit3 size={18} />
-                  </button>
+                  <div className="flex items-center gap-6 flex-shrink-0">
+                    <div className="flex flex-col items-end">
+                      <span className="text-[10px] text-brand-green font-black uppercase tracking-widest mb-1">{labels[answer]}</span>
+                      <div className="flex gap-1">
+                        {[...Array(7)].map((_, i) => (
+                          <div key={i} className={`w-2.5 h-2.5 rounded-full ${i === answer ? 'bg-brand-green shadow-[0_0_8px_rgba(12,205,126,0.6)]' : 'bg-white/10'}`} />
+                        ))}
+                      </div>
+                    </div>
+                    <button 
+                      onClick={() => {
+                        setCurrentQuestionIndex(idx);
+                        setStep('test');
+                      }}
+                      className="p-4 bg-navy-950 text-white/30 hover:text-brand-green hover:bg-brand-green/10 rounded-2xl transition-all"
+                    >
+                      <Edit3 size={20} />
+                    </button>
+                  </div>
                 </div>
               );
             })}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 w-full justify-center pt-8 border-t border-white/10">
              <button 
                onClick={() => {
                  setCurrentQuestionIndex(assessment.questions.length - 1);
                  setStep('test');
                }}
-               className="px-8 py-4 text-white/60 hover:text-white font-bold transition-colors"
+               className="px-10 py-5 text-white/30 hover:text-white font-black uppercase tracking-widest text-sm transition-colors"
              >
-               Back to Questions
+               Go Back
              </button>
-             <Button onClick={() => setStep('details')} className="px-12">
-               Generate My Blueprint <ArrowRight className="ml-2" />
+             <Button onClick={() => setStep('details')} className="px-16 py-6 text-xl shadow-2xl">
+               Proceed to Final Step <ArrowRight className="ml-2" />
              </Button>
           </div>
         </motion.div>
@@ -295,51 +291,57 @@ export const TestSession: React.FC<TestSessionProps> = ({ onComplete, onCancel }
     );
   }
 
-  // Render Details Form
+  // 4. Detailed Lead Form Step
   if (step === 'details') {
     return (
-      <div className="pt-32 pb-20 min-h-screen bg-navy-900 flex flex-col items-center px-6">
+      <div className="pt-32 pb-20 min-h-screen bg-navy-900 flex flex-col items-center px-6 text-left">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className="max-w-md w-full"
         >
-          <div className="text-center mb-10">
-             <div className="w-16 h-16 bg-brand-green/20 text-brand-green rounded-full flex items-center justify-center mx-auto mb-6">
-                <Shield size={32} />
+          <div className="text-center mb-12">
+             <div className="w-20 h-20 bg-brand-green text-navy-950 rounded-[24px] flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-brand-green/30">
+                <Shield size={36} strokeWidth={2.5} />
              </div>
-             <h1 className="text-3xl font-black text-white mb-2">Almost Done</h1>
-             <p className="text-text-muted">Enter your details to receive your personalized 12-page Career Strategy Blueprint.</p>
+             <h1 className="text-4xl font-black text-white mb-4 uppercase tracking-tight">Access Results</h1>
+             <p className="text-lg text-text-muted font-medium">Complete your details to receive your 12-page analysis.</p>
           </div>
 
-          <form onSubmit={handleFormSubmit} className="space-y-4">
+          <form onSubmit={handleFormSubmit} className="space-y-6">
              <div className="grid grid-cols-2 gap-4">
                <div className="space-y-2">
-                 <label className="text-xs font-bold uppercase tracking-widest text-white/40">First Name</label>
-                 <input 
-                   required
-                   type="text"
-                   value={userInfo.firstName}
-                   onChange={(e) => setUserInfo({...userInfo, firstName: e.target.value})}
-                   className="w-full bg-navy-800 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-green/50"
-                   placeholder="John"
-                 />
+                 <label className="text-[10px] font-black uppercase tracking-widest text-white/30 px-1">First Name</label>
+                 <div className="relative">
+                   <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20" size={18} />
+                   <input 
+                     required
+                     type="text"
+                     value={userInfo.firstName}
+                     onChange={(e) => setUserInfo({...userInfo, firstName: e.target.value})}
+                     className="w-full bg-navy-800 border border-white/5 rounded-2xl pl-12 pr-4 py-4 text-white placeholder-white/10 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-all"
+                     placeholder="First"
+                   />
+                 </div>
                </div>
                <div className="space-y-2">
-                 <label className="text-xs font-bold uppercase tracking-widest text-white/40">Last Name</label>
-                 <input 
-                   required
-                   type="text"
-                   value={userInfo.lastName}
-                   onChange={(e) => setUserInfo({...userInfo, lastName: e.target.value})}
-                   className="w-full bg-navy-800 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-green/50"
-                   placeholder="Doe"
-                 />
+                 <label className="text-[10px] font-black uppercase tracking-widest text-white/30 px-1">Last Name</label>
+                 <div className="relative">
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20" size={18} />
+                    <input 
+                      required
+                      type="text"
+                      value={userInfo.lastName}
+                      onChange={(e) => setUserInfo({...userInfo, lastName: e.target.value})}
+                      className="w-full bg-navy-800 border border-white/5 rounded-2xl pl-12 pr-4 py-4 text-white placeholder-white/10 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-all"
+                      placeholder="Last"
+                    />
+                 </div>
                </div>
              </div>
 
              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-white/40">Business Email</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-white/30 px-1">Professional Email</label>
                 <div className="relative">
                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20" size={18} />
                   <input 
@@ -347,44 +349,61 @@ export const TestSession: React.FC<TestSessionProps> = ({ onComplete, onCancel }
                     type="email"
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({...userInfo, email: e.target.value})}
-                    className="w-full bg-navy-800 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-green/50"
-                    placeholder="john@company.com"
+                    className="w-full bg-navy-800 border border-white/5 rounded-2xl pl-12 pr-4 py-4 text-white placeholder-white/10 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-all"
+                    placeholder="name@company.com"
                   />
                 </div>
              </div>
 
              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-white/40">Mobile (Optional)</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-white/30 px-1">Mobile (Optional)</label>
                 <div className="relative">
                   <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20" size={18} />
                   <input 
                     type="tel"
                     value={userInfo.phone}
                     onChange={(e) => setUserInfo({...userInfo, phone: e.target.value})}
-                    className="w-full bg-navy-800 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-green/50"
+                    className="w-full bg-navy-800 border border-white/5 rounded-2xl pl-12 pr-4 py-4 text-white placeholder-white/10 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-all"
                     placeholder="+1 (555) 000-0000"
                   />
                 </div>
              </div>
 
-             <div className="pt-6">
-                <Button type="submit" fullWidth className="py-5 text-lg shadow-2xl">
-                   Access My Roadmap <ArrowRight className="ml-2" />
+             <div className="pt-8">
+                <Button type="submit" fullWidth className="py-6 text-xl shadow-2xl shadow-brand-green/20">
+                   Generate Full Report <ArrowRight className="ml-2" />
                 </Button>
              </div>
              
-             <p className="text-[10px] text-center text-white/20 mt-6 leading-relaxed">
-               By proceeding, you agree to our Terms of Service and Privacy Policy. We value your data security and never spam.
+             <p className="text-[10px] text-center text-white/20 mt-10 leading-relaxed font-black uppercase tracking-widest">
+               Your career data is protected. <br/>By continuing, you agree to our privacy protocol.
              </p>
           </form>
-
-          <button 
-            onClick={() => setStep('summary')}
-            className="w-full mt-6 text-sm font-bold text-white/20 hover:text-white transition-colors"
-          >
-            Back to Summary
-          </button>
         </motion.div>
+      </div>
+    );
+  }
+
+  // 5. Processing Step
+  if (step === 'processing') {
+    return (
+      <div className="min-h-screen bg-navy-900 flex flex-col items-center justify-center p-6 text-center">
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-32 h-32 bg-brand-green/10 rounded-[40px] border-2 border-brand-green/30 flex items-center justify-center mb-12"
+        >
+          <Activity size={64} className="text-brand-green" />
+        </motion.div>
+        <h2 className="text-3xl font-black text-white uppercase tracking-tight mb-4">Finalizing Audit...</h2>
+        <div className="w-64 h-2 bg-white/5 rounded-full overflow-hidden mx-auto">
+          <motion.div 
+            className="h-full bg-brand-green"
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 2.5 }}
+          />
+        </div>
       </div>
     );
   }
