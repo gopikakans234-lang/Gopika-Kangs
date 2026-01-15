@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CONTENT } from '../constants';
@@ -147,15 +148,12 @@ export const TestSession: React.FC<TestSessionProps> = ({ onComplete, onCancel }
                   {assessment.questions[currentQuestionIndex]}
                 </h2>
 
-                {/* Slider / Circles Area */}
+                {/* Circles Area */}
                 <div className="relative w-full max-w-lg mx-auto pb-16">
-                  {/* Horizontal line */}
-                  <div className="absolute left-0 right-0 top-[16px] h-[1px] bg-white/10 z-0" />
-                  
-                  <div className="flex items-center justify-between relative z-10 px-2 h-[32px]">
+                  <div className="flex items-center justify-between relative z-10 px-2 h-[48px]">
                     {[...Array(7)].map((_, i) => {
                       const isActive = answers[currentQuestionIndex] === i;
-                      const sizes = [32, 16, 16, 16, 16, 16, 32];
+                      const sizes = [40, 24, 24, 24, 24, 24, 40];
                       const size = sizes[i];
                       
                       return (
@@ -164,7 +162,7 @@ export const TestSession: React.FC<TestSessionProps> = ({ onComplete, onCancel }
                             onClick={() => handleSelectAnswer(i)}
                             className={`
                               relative rounded-full transition-all duration-300 transform
-                              flex items-center justify-center
+                              flex items-center justify-center border-2 border-white
                             `}
                             style={{ 
                               width: size, 

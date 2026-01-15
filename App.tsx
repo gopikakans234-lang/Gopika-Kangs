@@ -15,10 +15,9 @@ import { Footer } from './components/Footer';
 import { LeadModal } from './components/LeadModal';
 import { TestSession } from './components/TestSession';
 import { QuizHub } from './components/QuizHub';
-import { AudioQuiz } from './components/AudioQuiz';
-import { ImageQuiz } from './components/ImageQuiz';
+import { VocalAssessment } from './components/VocalAssessment';
 
-type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail' | 'ebook' | 'ebook-detail' | 'quiz-hub' | 'career-quiz' | 'audio-quiz' | 'image-quiz' | 'voice-quiz';
+type View = 'home' | 'blog' | 'blog-post' | 'podcast' | 'podcast-detail' | 'ebook' | 'ebook-detail' | 'quiz-hub' | 'career-quiz' | 'voice-quiz';
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>('home');
@@ -43,8 +42,6 @@ const App: React.FC = () => {
   const handleQuizSelect = (id: string) => {
     switch(id) {
       case 'career': setView('career-quiz'); break;
-      case 'audio': setView('audio-quiz'); break;
-      case 'image': setView('image-quiz'); break;
       case 'voice': setView('voice-quiz'); break;
       default: setView('career-quiz');
     }
@@ -71,7 +68,7 @@ const App: React.FC = () => {
     openLeadModal();
   };
 
-  const isQuizMode = view === 'quiz-hub' || view === 'career-quiz' || view === 'audio-quiz' || view === 'image-quiz' || view === 'voice-quiz';
+  const isQuizMode = view === 'quiz-hub' || view === 'career-quiz' || view === 'voice-quiz';
   const isReaderMode = view === 'ebook-detail';
 
   return (
@@ -134,17 +131,10 @@ const App: React.FC = () => {
           />
         )}
 
-        {view === 'audio-quiz' && (
-          <AudioQuiz 
+        {view === 'voice-quiz' && (
+          <VocalAssessment 
             onCancel={navigateToQuizHub}
-            onComplete={(score) => handleAssessmentComplete({ mode: 'audio', score })}
-          />
-        )}
-
-        {view === 'image-quiz' && (
-          <ImageQuiz 
-            onCancel={navigateToQuizHub}
-            onComplete={(score) => handleAssessmentComplete({ mode: 'image', score })}
+            onComplete={(data) => handleAssessmentComplete(data)}
           />
         )}
 

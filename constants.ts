@@ -24,66 +24,136 @@ export const CONTENT = {
       },
       {
         id: 'voice',
-        title: "Voice Signature Scan",
-        description: "Analyze your vocal presence, resonance, and leadership tone.",
+        title: "Vocal Image Analysis",
+        description: "AI-driven scan of your vocal authority, resonance, and presence.",
         icon: 'Mic2',
-        tag: 'NEW',
-        color: 'blue-400'
-      },
-      {
-        id: 'audio',
-        title: "Audio Intuition Test",
-        description: "Listen to high-stakes scenarios. Test your professional EQ.",
-        icon: 'Headphones',
-        tag: 'INTERACTIVE',
-        color: 'purple-400'
-      },
-      {
-        id: 'image',
-        title: "Visual System Design",
-        description: "Identify architecture flaws in complex technical diagrams.",
-        icon: 'Layout',
-        tag: 'TECHNICAL',
-        color: 'orange-400'
+        tag: 'ADVANCED',
+        color: 'brand-green'
       }
     ]
   },
-  audioQuiz: {
-    title: "The Listening Leader",
-    scenarios: [
+  voiceAnalysis: {
+    intro: {
+      heading: "Vocal Image Audit",
+      subHeading: "Learn to Speak So People Listen — with AI Coach",
+      description: "Get a personalized analysis of your speaking skills in just 1 minute.",
+      cta: "Start Analysis",
+      back: "Back to Hub"
+    },
+    onboarding: [
       {
         id: 1,
-        title: "The Boardroom Conflict",
-        context: "Listen to the tone of the stakeholders. Who is truly in control of the room?",
-        options: ["The loud challenger", "The quiet decision maker", "The mediator", "The observer"],
-        correct: 1
+        title: "Select your gender to start",
+        options: ["Male →", "Female →"]
       },
       {
         id: 2,
-        title: "The Subtle Rejection",
-        context: "A client provides feedback on a proposal. Detect the underlying hesitation.",
-        options: ["Budget concerns", "Timeline anxiety", "Technical distrust", "Internal politics"],
-        correct: 2
-      }
-    ]
-  },
-  imageQuiz: {
-    title: "The Visual Architect",
-    scenarios: [
-      {
-        id: 1,
-        image: "https://images.unsplash.com/photo-1551288049-bbda48658a7d?auto=format&fit=crop&q=80&w=1000",
-        question: "Spot the primary scalability bottleneck in this microservices cluster.",
-        options: ["Database locking", "N+1 Query Issue", "Circular dependency", "Memory leak"],
-        correct: 2
+        title: "What is your age?",
+        helper: "We ask this to improve the accuracy of your assessment.",
+        options: ["18–24", "25–34", "35–44", "45–54", "55–64", "65+"]
       },
       {
-        id: 2,
-        image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&q=80&w=1000",
-        question: "Which UI pattern here violates established accessibility (a11y) standards?",
-        options: ["Low color contrast", "Missing focus state", "Non-semantic HTML", "All of the above"],
-        correct: 3
+        id: 3,
+        title: "What motivates you the most?",
+        subtitle: "Let’s find the main area to focus on.",
+        options: ["Communication", "Relationships", "Career", "Clarity", "Self-Confidence", "Public Speaking", "Sexy Voice", "Leadership"]
+      },
+      {
+        id: 4,
+        title: "Have you had previous voice training experience?",
+        options: ["👍 Yes", "👌 No"]
+      },
+      {
+        id: 5,
+        title: "How confident do you feel about your voice today?",
+        options: ["Very confident", "Somewhat confident", "Neutral", "Not very confident", "Very uncomfortable"]
+      },
+      {
+        id: 6,
+        title: "How often do you use your voice professionally?",
+        options: ["All day", "Several times a day", "A few times a week", "Rarely"]
+      },
+      {
+        id: 7,
+        title: "What is your biggest speaking challenge?",
+        options: ["Nervousness", "Lack of clarity", "Low confidence", "Monotone voice", "Speaking too fast"]
+      },
+      {
+        id: 8,
+        title: "Choose activities you often deal with at work",
+        type: "multi",
+        options: ["Communicate with clients", "Speak in public", "Give presentations", "Negotiate deals", "Hire people", "Sell something", "Build a personal brand"]
+      },
+      {
+        id: 9,
+        title: "How comfortable are you speaking in front of others?",
+        options: ["Very comfortable", "Comfortable with preparation", "Neutral", "Uncomfortable", "Very uncomfortable"]
+      },
+      {
+        id: 10,
+        title: "How would you like your voice to sound?",
+        options: ["Calm and confident", "Powerful and authoritative", "Friendly and warm", "Clear and professional", "Charismatic and engaging"]
+      },
+      {
+        id: 11,
+        title: "How much time can you realistically practice each day?",
+        options: ["1–3 minutes", "5 minutes", "10 minutes", "15+ minutes"]
+      },
+      {
+        id: 12,
+        type: "vision",
+        title: "Improve your career with science",
+        labels: ["Today", "In 1 Month"],
+        callouts: ["🟢 Using Vocal Image every day", "🔴 Mindless scrolling"]
+      },
+      {
+        id: 13,
+        title: "What do you consider yourself?",
+        options: ["🤗 Extrovert", "😌 Introvert", "🤔 Both"]
+      },
+      {
+        id: 14,
+        title: "How do you prefer to improve your skills?",
+        options: ["Short daily exercises", "Guided coaching", "Feedback-based learning", "Challenges and goals"]
+      },
+      {
+        id: 15,
+        type: "welcome",
+        title: "🎉 Welcome to the team!",
+        description: "We take everything you tell us into account so we can craft your personal plan accordingly. You're now ready for the AI Vocal Scan."
       }
+    ],
+    steps: [
+      {
+        id: "record",
+        question: "Record your voice. Read this clearly:",
+        sentence: "Strategic engineers don't just write great code; they communicate it with clarity, authority, and conviction.",
+        instruction: "Tap the mic, wait for the pulse, and speak naturally."
+      }
+    ],
+    personas: [
+      {
+        name: "The Resonant Architect",
+        description: "Your voice commands respect through deep tonality and intentional pauses. You sound highly competent and strategic.",
+        score: 94
+      },
+      {
+        name: "The Precise Orchestrator",
+        description: "Clarity is your superpower. Every word is distinct. You are perceived as incredibly reliable and detail-oriented.",
+        score: 88
+      },
+      {
+        name: "The Visionary Leader",
+        description: "High energy and dynamic pitch. You inspire teams and build momentum quickly through your vocal passion.",
+        score: 91
+      }
+    ],
+    loadingMessages: [
+      "Decoding frequency spectrum...",
+      "Measuring rhythmic variance...",
+      "Analyzing confidence markers...",
+      "Matching with leadership baselines...",
+      "Finalizing your Vocal Signature..."
     ]
   },
   realityCheck: {
@@ -469,5 +539,37 @@ export const CONTENT = {
         }
       }
     }
+  },
+  audioQuiz: {
+    scenarios: [
+      {
+        title: "Outage Communication",
+        context: "Listen to the lead developer's tone during a production outage. Rate their professional presence.",
+        options: ["Panicked/Unorganized", "Calm/Decisive", "Passive/Wait-and-see", "Aggressive/Blaming"],
+        correct: 1
+      },
+      {
+        title: "Stakeholder Alignment",
+        context: "The lead is explaining why a requested feature will be delayed for architectural stability.",
+        options: ["Defensive/Refusal", "Strategic/Alignment", "Over-Technical/Confusing", "Compliant/Non-committal"],
+        correct: 1
+      }
+    ]
+  },
+  imageQuiz: {
+    scenarios: [
+      {
+        question: "Analyze this system architecture diagram. Where is the most strategic point of failure?",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
+        options: ["The Load Balancer configuration", "Data persistence synchronization", "Stateless service scaling", "Frontend caching layer"],
+        correct: 1
+      },
+      {
+        question: "Identify the high-leverage area in this career trajectory performance chart.",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
+        options: ["Raw Output (LOC)", "Network Breadth", "Strategic Visibility", "Overtime Allocation"],
+        correct: 2
+      }
+    ]
   }
 };
