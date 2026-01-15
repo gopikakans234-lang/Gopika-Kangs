@@ -39,10 +39,10 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick, onQuizClick }) => {
         <motion.div className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 mb-10 md:mb-14 w-full max-w-none leading-relaxed font-normal flex flex-col gap-4 md:gap-6 px-2" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           {Array.isArray(hero.description) ? (
             hero.description.map((line: string, index: number) => (
-              <p key={index} className="md:whitespace-nowrap max-w-3xl mx-auto md:max-w-none">{line}</p>
+              <p key={index} className="max-w-3xl mx-auto">{line}</p>
             ))
           ) : (
-            <p className="md:whitespace-nowrap max-w-3xl mx-auto md:max-w-none">{hero.description}</p>
+            <p className="max-w-3xl mx-auto">{hero.description}</p>
           )}
         </motion.div>
 

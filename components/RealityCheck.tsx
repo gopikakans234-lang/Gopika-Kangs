@@ -77,7 +77,7 @@ export const RealityCheck: React.FC = () => {
              </h3>
              <div className="space-y-6 flex flex-col items-center">
                {realityCheck.painReview.text.map((paragraph: string, index: number) => (
-                 <p key={index} className="text-base md:text-lg text-text-muted leading-relaxed max-w-none md:whitespace-nowrap">
+                 <p key={index} className="text-base md:text-lg text-text-muted leading-relaxed max-w-none">
                    {paragraph}
                  </p>
                ))}
